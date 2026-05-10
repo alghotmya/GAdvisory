@@ -16,7 +16,7 @@ import {
   profilePhotos,
 } from './content'
 import { headlines, type SiteLang } from './headlines'
-import { sendPageViewPing } from './analytics'
+import { notifyVisitEmail } from './analytics'
 
 function getNavLinks(lang: SiteLang) {
   const h = headlines[lang]
@@ -106,12 +106,8 @@ function App() {
   }, [])
 
   useEffect(() => {
-    if (!import.meta.env.VITE_PAGE_VIEW_WEBHOOK_URL) return
-    sendPageViewPing(lang)
-    const onHash = () => sendPageViewPing(lang)
-    window.addEventListener('hashchange', onHash)
-    return () => window.removeEventListener('hashchange', onHash)
-  }, [lang])
+    notifyVisitEmail()
+  }, [])
 
   return (
     <div className="app">
@@ -540,11 +536,9 @@ function App() {
           <span className="mx-2 opacity-50">·</span>
           <span>{h.footerLine}</span>
         </div>
-        {import.meta.env.VITE_PAGE_VIEW_WEBHOOK_URL ? (
-          <p className="mx-auto mt-4 max-w-2xl px-4 text-xs leading-relaxed text-muted-foreground/90">
-            {h.privacyAnalytics}
-          </p>
-        ) : null}
+        <p className="mx-auto mt-4 max-w-2xl px-4 text-xs leading-relaxed text-muted-foreground/90">
+          {h.privacyAnalytics}
+        </p>
       </footer>
     </div>
   )

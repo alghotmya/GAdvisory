@@ -19,7 +19,7 @@ export const headlines = {
     readArticle: 'Read article',
     footerLine: 'Senior strategic engagement · Customer success · Cloud transformation',
     privacyAnalytics:
-      'This site may send a minimal page-view signal (path, referrer, language, time) to an endpoint I operate for aggregate traffic insight—no ads, no profiling.',
+      'When you open this site, a single notification email may be sent to the owner (at most once per browser session) with the page path, referrer, language, and time—via FormSubmit; no ads or profiling.',
   },
   fr: {
     eyebrow: 'Engagement · Réussite client · Transformation infonuagique',
@@ -39,6 +39,6 @@ export const headlines = {
     readArticle: 'Lire l’article',
     footerLine: 'Engagement stratégique · Réussite client · Transformation infonuagique',
     privacyAnalytics:
-      'Ce site peut envoyer un signal minimal de consultation (chemin, référent, langue, heure) vers un point de terminaison que j’exploite pour des statistiques globales—sans publicité ni profilage.',
+      'À l’ouverture du site, un courriel d’avis peut être envoyé au propriétaire (au plus une fois par session de navigateur) avec le chemin, le référent, la langue et l’heure—via FormSubmit ; sans publicité ni profilage.',
   },
 } as const
