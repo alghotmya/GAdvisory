@@ -217,9 +217,9 @@ function App() {
           <div className="section__head">
             <h2 className="section__title">Representative engagements</h2>
             <p className="section__lede">
-              Codenames protect client confidentiality; substance reflects the class of problems I
-              solve. Replace with your public references or anonymized wins in{' '}
-              <code className="inline-code">src/content.ts</code>.
+              Codenames and rounded, directional metrics protect client identity. Figures are
+              illustrative of the class of outcomes delivered—not projections or guarantees for any
+              future engagement.
             </p>
           </div>
           <div className="engage-grid">
@@ -231,6 +231,11 @@ function App() {
                 </header>
                 <p className="engage__context">{e.context}</p>
                 <p className="engage__outcome">{e.outcome}</p>
+                <ul className="engage__metrics" aria-label="Illustrative impact indicators">
+                  {e.metrics.map((m) => (
+                    <li key={m}>{m}</li>
+                  ))}
+                </ul>
                 <ul className="engage__stack">
                   {e.stack.map((s) => (
                     <li key={s}>{s}</li>
@@ -245,8 +250,8 @@ function App() {
           <div className="section__head">
             <h2 className="section__title">Knowledge atlas</h2>
             <p className="section__lede">
-              The résumé is the receipt. This is the inventory—how thinking, methods, and platforms
-              compound across engagements.
+              How methods, platforms, and delivery discipline compound—strategic advisory first,
+              with rigor underneath.
             </p>
           </div>
           <div className="atlas">
@@ -302,8 +307,8 @@ function App() {
               </a>
             </div>
             <p className="connect__fineprint">
-              Résumé PDF matches this positioning; refine bullets and credentials in{' '}
-              <code className="inline-code">src/content.ts</code> anytime.
+              Engagement metrics shown elsewhere on this page are anonymized and rounded for
+              confidentiality.
             </p>
           </div>
         </Section>

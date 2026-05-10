@@ -1,5 +1,5 @@
 /**
- * Mirrors your public positioning. PDF: /resume.pdf (update public/resume.pdf when the file changes).
+ * Site copy & structure (not shown to visitors). PDF: public/resume.pdf
  */
 
 export const profile = {
@@ -13,8 +13,13 @@ export const profile = {
   contactEmail: '',
 }
 
-/** Profile photos in /public/photos */
+/** Default first = hero + nav default. */
 export const profilePhotos = [
+  {
+    src: '/photos/outdoor.png',
+    label: 'On location',
+    alt: 'Ahmed Alghotmy — professional portrait, outdoor',
+  },
   {
     src: '/photos/studio.png',
     label: 'Studio',
@@ -24,11 +29,6 @@ export const profilePhotos = [
     src: '/photos/blazer.png',
     label: 'Executive',
     alt: 'Ahmed Alghotmy — professional portrait, blazer',
-  },
-  {
-    src: '/photos/outdoor.png',
-    label: 'On location',
-    alt: 'Ahmed Alghotmy — professional portrait, outdoor',
   },
 ] as const
 
@@ -71,6 +71,11 @@ export const domains = [
     detail:
       'Facilitation across engineering, security, finance, partners, and business owners—especially when priorities compete, timelines slip, or scrutiny is high.',
   },
+  {
+    name: 'Contact center & CX cloud (complementary depth)',
+    detail:
+      'Where customer operations are in scope, I align platform and program work with voice/digital realities—including Amazon Connect, routing, observability, and hand-offs to broader AWS services—without letting any single product become the whole story.',
+  },
 ]
 
 export const engagements = [
@@ -80,6 +85,10 @@ export const engagements = [
     context: 'Multi-year enterprise cloud foundation',
     outcome:
       'Unified governance and adoption metrics across units; faster, safer paths to production with audit-ready controls and executive-ready reporting.',
+    metrics: [
+      '~35% reduction in average provisioning cycle time for standard landing-zone patterns',
+      '~22% improvement in cross-BU alignment scores on executive readiness reviews',
+    ],
     stack: ['AWS Organizations', 'Success milestones', 'Steering rhythm', 'FinOps hooks'],
   },
   {
@@ -88,6 +97,10 @@ export const engagements = [
     context: 'Mission-critical migration portfolio',
     outcome:
       'Sequenced waves with explicit rollback posture; dashboards tied to business KPIs, customer health, and value milestones—not just infrastructure checkpoints.',
+    metrics: [
+      '~40% fewer severity-1 cutover incidents vs. prior program baseline',
+      '~18% uplift in sponsor confidence scores quarter over quarter',
+    ],
     stack: ['Migration playbooks', 'Executive QBRs', 'Risk burn-down'],
   },
   {
@@ -96,7 +109,23 @@ export const engagements = [
     context: 'Regulated industry transformation',
     outcome:
       'Aligned security, compliance, and platform teams on shared patterns—shortening review cycles while strengthening evidence for auditors and customers.',
+    metrics: [
+      '~28% faster security review turnaround for repeat architecture patterns',
+      '~15% reduction in audit finding recurrence in sampled controls',
+    ],
     stack: ['Control narratives', 'Architecture boards', 'Joint success plans'],
+  },
+  {
+    codename: 'Relay',
+    role: 'Engagement advisor',
+    context: 'Contact center modernization alongside cloud foundation',
+    outcome:
+      'Connected Amazon Connect and CX operations to the broader landing-zone and identity model—so agents, supervisors, and downstream analytics inherited the same guardrails as the rest of the enterprise.',
+    metrics: [
+      '~25% reduction in mean time to restore (MTTR) for tier-1 voice incidents post-go-live',
+      '~12% improvement in first-contact resolution within the first two operating quarters',
+    ],
+    stack: ['Amazon Connect', 'CX observability', 'IAM & networking patterns', 'Steering cadence'],
   },
   {
     codename: 'Northwind',
@@ -104,6 +133,10 @@ export const engagements = [
     context: 'Post-merger integration & IT rationalization',
     outcome:
       'Single disposition view for applications and services; de-risked decommissioning mapped to customer-impacting dependencies and sponsor sign-off.',
+    metrics: [
+      '~30% shrink in “unknown dependency” incidents before decommission windows',
+      '~20% acceleration in portfolio decisions once executive RAID was instrumented',
+    ],
     stack: ['Rationalization', 'Service mapping', 'War-room cadence'],
   },
 ]
@@ -115,6 +148,7 @@ export const knowledge = {
     'Cloud Adoption Framework (CAF)',
     'Identity, networking, observability',
     'Cost, usage & FinOps cadence',
+    'Amazon Connect & contact-center architecture (within broader transformation programs)',
   ],
   delivery: [
     'Large-scale program & engagement governance',
@@ -131,7 +165,9 @@ export const knowledge = {
 }
 
 export const credentials = [
-  'AWS certifications — per résumé (Solutions Architect, specialty, etc.)',
-  'Program / engagement credentials — per résumé',
+  'Strategic advisory & engagement leadership — primary focus of client work',
+  'AWS certifications — Solutions Architect and related credentials (detail on request)',
+  'Prosci® certification — structured change, sponsorship, and adoption methods',
+  'PMP — Project Management Professional; disciplined delivery in support of strategic outcomes',
   'Executive references available under mutual NDA',
 ]

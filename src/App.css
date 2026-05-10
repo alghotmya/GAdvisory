@@ -659,9 +659,40 @@
 }
 
 .engage__outcome {
-  margin: 0 0 0.85rem;
+  margin: 0 0 0.65rem;
   color: #c8ced9;
   font-size: 0.98rem;
+}
+
+.engage__metrics {
+  margin: 0 0 0.85rem;
+  padding: 0.65rem 0 0 1.1rem;
+  border-top: 1px dashed rgba(110, 201, 190, 0.25);
+  list-style: none;
+}
+
+.engage__metrics li {
+  position: relative;
+  margin: 0 0 0.4rem;
+  padding-left: 0.85rem;
+  font-size: 0.86rem;
+  color: var(--accent2);
+  line-height: 1.4;
+}
+
+.engage__metrics li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.engage__metrics li:last-child {
+  margin-bottom: 0;
 }
 
 .engage__stack {
