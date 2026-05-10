@@ -1,66 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&display=swap');
 
-:root {
-  --bg0: #060a10;
-  --bg1: #0c1219;
-  --bg2: #101a22;
-  --ink: #e8eaef;
-  --muted: #96a3b2;
-  --dim: #5c6b7a;
-  /* Gold: executive trust; teal: customer success / renewal energy */
-  --accent: #c9a962;
-  --accent2: #6ec9be;
-  --line: rgba(255, 255, 255, 0.08);
-  --glow: rgba(110, 201, 190, 0.28);
-  --font-sans: 'DM Sans', system-ui, sans-serif;
-  --font-display: 'Fraunces', Georgia, serif;
-  --radius: 14px;
-  --max: 1120px;
-  --nav-h: 4.25rem;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+@layer base {
+  :root {
+    --background: 210 42% 5%;
+    --foreground: 210 25% 94%;
+    --card: 212 38% 8%;
+    --card-foreground: 210 25% 94%;
+    --popover: 212 38% 8%;
+    --popover-foreground: 210 25% 94%;
+    --primary: 42 52% 58%;
+    --primary-foreground: 220 40% 9%;
+    --secondary: 172 32% 16%;
+    --secondary-foreground: 168 55% 92%;
+    --muted: 215 22% 16%;
+    --muted-foreground: 215 14% 60%;
+    --accent: 172 48% 42%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 55% 40%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 215 18% 16%;
+    --input: 215 18% 16%;
+    --ring: 172 48% 45%;
+    --radius: 0.875rem;
   }
-}
 
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  font-family: var(--font-sans);
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--ink);
-  background: var(--bg0);
-  -webkit-font-smoothing: antialiased;
-}
+  * {
+    @apply border-border;
+  }
 
-#root {
-  min-height: 100vh;
-}
+  body {
+    @apply min-h-screen bg-background font-sans text-foreground antialiased;
+  }
 
-a {
-  color: inherit;
-}
-
-code,
-.inline-code {
-  font-family: ui-monospace, 'Cascadia Code', 'SF Mono', Menlo, monospace;
-  font-size: 0.9em;
-  padding: 0.12em 0.35em;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--line);
+  #root {
+    @apply min-h-screen;
+  }
 }

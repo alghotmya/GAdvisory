@@ -68,7 +68,7 @@ export const domains = [
       'Facilitation across engineering, security, finance, partners, and business owners—especially when priorities compete, timelines slip, or scrutiny is high.',
   },
   {
-    name: 'Contact center & CX cloud (complementary depth)',
+    name: 'Contact center & CX cloud',
     detail:
       'Where customer operations are in scope, I align platform and program work with voice/digital realities—including Amazon Connect, routing, observability, and hand-offs to broader AWS services—without letting any single product become the whole story.',
   },
@@ -162,8 +162,10 @@ export const knowledge = {
 
 export const credentials = [
   'Strategic advisory & engagement leadership — primary focus of client work',
-  'AWS certifications — Solutions Architect and related credentials (detail on request)',
-  'Prosci® certification — structured change, sponsorship, and adoption methods',
-  'PMP — Project Management Professional; disciplined delivery in support of strategic outcomes',
+  'AWS — Solutions Architect and related credentials (detail on request)',
+  'Google Cloud Certified — Professional Cloud Architect',
+  'Microsoft Azure — Azure Fundamentals (AZ-900) and complementary fundamentals certifications',
+  'Prosci® — structured change, sponsorship, and adoption methods',
+  'PMP (PMI) / PRINCE2® — program and project governance',
   'Executive references available under mutual NDA',
 ]
