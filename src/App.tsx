@@ -179,7 +179,6 @@ function App() {
                   decoding="async"
                 />
               </div>
-              <figcaption className="hero__caption">{h.heroCaption}</figcaption>
             </figure>
             <div className="hero__thumbs" role="group" aria-label="Profile photos">
               {profilePhotos.map((p, i) => (

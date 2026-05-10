@@ -115,14 +115,6 @@
   background: hsl(var(--card));
 }
 
-.hero__caption {
-  margin: 0.65rem 0 0;
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: hsl(var(--muted-foreground));
-}
-
 .hero__thumbs {
   display: flex;
   flex-wrap: wrap;
