@@ -1,19 +1,19 @@
 /**
- * Edit this file to mirror your PDF and real engagements.
- * PDF is served at /resume.pdf (replace public/resume.pdf when you update it).
+ * Mirrors your public positioning. PDF: /resume.pdf (update public/resume.pdf when the file changes).
  */
 
 export const profile = {
   name: 'Ahmed Alghotmy',
-  shortTitle: 'Executive Consultant · Engagement Leadership',
+  shortTitle: 'Senior Strategic Engagement Consultant',
+  roleFocus: 'Customer Success & Cloud Transformation Advisor',
   tagline:
-    'I lead strategic, high-stakes cloud and transformation programs where technical depth, political sensitivity, and delivery discipline must move as one.',
+    'I steward strategic engagements end-to-end—aligning executives, delivery teams, and partners so cloud transformation delivers durable adoption, measurable outcomes, and trusted customer relationships.',
   location: 'Canada · Bilingual EN / FR',
   linkedinUrl: 'https://www.linkedin.com/in/ahmed-alghotmy',
-  contactEmail: '', // e.g. 'you@domain.com' — adds a mailto button when set
+  contactEmail: '',
 }
 
-/** Profile photos in /public/photos — index of default hero + nav avatar */
+/** Profile photos in /public/photos */
 export const profilePhotos = [
   {
     src: '/photos/studio.png',
@@ -34,42 +34,42 @@ export const profilePhotos = [
 
 export const mandate = [
   {
-    title: 'Executive translation',
+    title: 'Strategic engagement leadership',
     body:
-      'Turn board-level intent into engineering-ready mandates: scope, guardrails, and measurable outcomes—without losing nuance in regulated or politically charged contexts.',
+      'Frame the charter, governance, and decision rights so complex programs stay coherent—from executive steering to working-team execution—without losing sight of customer trust and renewal.',
   },
   {
-    title: 'Delivery under scrutiny',
+    title: 'Customer success at scale',
     body:
-      'Stand up complex programs where failure is visible: migration waves, platform foundations, and customer-facing launches with tight governance and crisp escalation paths.',
+      'Connect adoption, value realization, and cloud roadmaps: success plans, executive business reviews, and risk signals that turn technical milestones into stories the business owns.',
   },
   {
-    title: 'Technical credibility',
+    title: 'Cloud transformation advisory',
     body:
-      'Earn trust with architects and CxOs alike—grounding decisions in AWS Well-Architected, Cloud Adoption Framework, and pragmatic trade-offs on security, cost, and velocity.',
+      'Ground recommendations in AWS Well-Architected, Cloud Adoption Framework, and pragmatic trade-offs—so architecture, security, and FinOps reinforce the outcomes customers signed up for.',
   },
 ]
 
 export const domains = [
   {
-    name: 'Enterprise cloud adoption',
+    name: 'Enterprise cloud adoption & landing zones',
     detail:
-      'Landing zones, organizational alignment, portfolio roadmaps, and operating models that stick after the consultants leave.',
+      'Foundations that scale: organizations, guardrails, and operating models—with clear paths from pilot to production and accountable owners on the customer side.',
   },
   {
-    name: 'Large-scale migration & modernization',
+    name: 'Migration, modernization & program delivery',
     detail:
-      'Wave planning, dependency mapping, cutover choreography, and risk burn-down for business-critical workloads.',
+      'Wave planning, dependency management, and cutover discipline for business-critical workloads, with transparency for stakeholders who carry the risk.',
   },
   {
-    name: 'Program recovery & turnaround',
+    name: 'Customer success & executive alignment',
     detail:
-      'Re-baselining stalled initiatives, resetting stakeholder contracts, and restoring predictable execution rhythms.',
+      'Cadence design for sponsors and delivery leads: mutual success criteria, escalation paths, and narratives that keep technical work tied to revenue, risk, and reputation.',
   },
   {
-    name: 'Sensitive stakeholder orchestration',
+    name: 'Sensitive multi-party orchestration',
     detail:
-      'Facilitation across engineering, security, finance, and business owners—especially when priorities compete and timelines do not.',
+      'Facilitation across engineering, security, finance, partners, and business owners—especially when priorities compete, timelines slip, or scrutiny is high.',
   },
 ]
 
@@ -79,60 +79,59 @@ export const engagements = [
     role: 'Engagement direction',
     context: 'Multi-year enterprise cloud foundation',
     outcome:
-      'Unified governance model across business units; reduced time-to-production for net-new workloads while satisfying risk and audit constraints.',
-    stack: ['AWS Organizations', 'Control Tower', 'Security baselines', 'FinOps hooks'],
+      'Unified governance and adoption metrics across units; faster, safer paths to production with audit-ready controls and executive-ready reporting.',
+    stack: ['AWS Organizations', 'Success milestones', 'Steering rhythm', 'FinOps hooks'],
   },
   {
     codename: 'Meridian',
-    role: 'Program leadership',
+    role: 'Program & success leadership',
     context: 'Mission-critical migration portfolio',
     outcome:
-      'Sequenced migration waves with explicit rollback posture; executive dashboards tied to business KPIs, not just infrastructure milestones.',
-    stack: ['Migration methodology', 'Resilience testing', 'Executive steering'],
+      'Sequenced waves with explicit rollback posture; dashboards tied to business KPIs, customer health, and value milestones—not just infrastructure checkpoints.',
+    stack: ['Migration playbooks', 'Executive QBRs', 'Risk burn-down'],
   },
   {
     codename: 'Cipher',
     role: 'Trusted advisor',
     context: 'Regulated industry transformation',
     outcome:
-      'Bridged security, compliance, and platform teams on shared patterns—reducing review cycles without weakening controls.',
-    stack: ['Zero-trust patterns', 'Evidence packs', 'Architecture review boards'],
+      'Aligned security, compliance, and platform teams on shared patterns—shortening review cycles while strengthening evidence for auditors and customers.',
+    stack: ['Control narratives', 'Architecture boards', 'Joint success plans'],
   },
   {
     codename: 'Northwind',
-    role: 'Delivery governance',
+    role: 'Transformation governance',
     context: 'Post-merger integration & IT rationalization',
     outcome:
-      'Single source of truth for application disposition; de-risked decommissioning tied to customer-impacting service maps.',
-    stack: ['Application rationalization', 'CMDB alignment', 'Cutover war rooms'],
+      'Single disposition view for applications and services; de-risked decommissioning mapped to customer-impacting dependencies and sponsor sign-off.',
+    stack: ['Rationalization', 'Service mapping', 'War-room cadence'],
   },
 ]
 
 export const knowledge = {
   cloud: [
-    'AWS core & hybrid patterns',
-    'Well-Architected reviews',
+    'AWS core, hybrid & edge patterns',
+    'Well-Architected & operational excellence',
     'Cloud Adoption Framework (CAF)',
     'Identity, networking, observability',
-    'Cost optimization & FinOps cadence',
+    'Cost, usage & FinOps cadence',
   ],
   delivery: [
-    'PMP-style program governance',
-    'RAID with teeth (not shelf-ware)',
-    'Steering & escalation design',
-    'Vendor / SI coordination',
-    'Executive communications',
+    'Large-scale program & engagement governance',
+    'RAID, dependencies & executive escalation design',
+    'Partner & systems integrator coordination',
+    'Steering forums & decision records',
   ],
   practices: [
-    'Workshop facilitation',
-    'Architecture decision records',
-    'Technical proof points for non-technical forums',
-    'Bilingual stakeholder sessions (EN/FR)',
+    'Customer success planning & value narratives',
+    'Workshop & executive session facilitation (EN/FR)',
+    'Technical credibility with engineering & CxO audiences',
+    'Adoption health: signals, interventions, renewals mindset',
   ],
 }
 
 export const credentials = [
-  'AWS certifications — align to your PDF (e.g. Solutions Architect, Specialty)',
-  'PMP / agile program credentials — as applicable',
-  'Executive-facing references available under NDA',
+  'AWS certifications — per résumé (Solutions Architect, specialty, etc.)',
+  'Program / engagement credentials — per résumé',
+  'Executive references available under mutual NDA',
 ]

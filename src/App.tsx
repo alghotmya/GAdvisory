@@ -139,11 +139,12 @@ function App() {
           <div className="hero__content">
             <p className="hero__eyebrow">
               <span className="hero__pulse" aria-hidden />
-              Strategic · Sensitive · High demand
+              Engagement · Customer success · Cloud transformation
             </p>
             <h1 className="hero__title">
               {profile.name}
               <span className="hero__title-sub">{profile.shortTitle}</span>
+              <span className="hero__title-focus">{profile.roleFocus}</span>
             </h1>
             <p className="hero__tagline">{profile.tagline}</p>
             <p className="hero__loc">{profile.location}</p>
@@ -301,8 +302,8 @@ function App() {
               </a>
             </div>
             <p className="connect__fineprint">
-              Replace placeholders in <code className="inline-code">src/content.ts</code> with your
-              exact certifications, public links, and engagement titles.
+              Résumé PDF matches this positioning; refine bullets and credentials in{' '}
+              <code className="inline-code">src/content.ts</code> anytime.
             </p>
           </div>
         </Section>
@@ -311,7 +312,7 @@ function App() {
       <footer className="footer">
         <span>© {new Date().getFullYear()} {profile.name}</span>
         <span className="footer__sep">·</span>
-        <span>Executive consulting · Cloud transformation</span>
+        <span>Senior strategic engagement · Customer success · Cloud transformation</span>
       </footer>
     </div>
   )

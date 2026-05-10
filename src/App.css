@@ -9,9 +9,9 @@
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 55% at 15% -10%, rgba(126, 184, 218, 0.14), transparent 55%),
-    radial-gradient(ellipse 60% 45% at 95% 15%, rgba(201, 169, 98, 0.12), transparent 50%),
-    radial-gradient(ellipse 50% 35% at 50% 100%, rgba(126, 184, 218, 0.08), transparent 45%),
+    radial-gradient(ellipse 80% 55% at 15% -10%, rgba(110, 201, 190, 0.12), transparent 55%),
+    radial-gradient(ellipse 60% 45% at 95% 15%, rgba(201, 169, 98, 0.11), transparent 50%),
+    radial-gradient(ellipse 50% 38% at 50% 100%, rgba(110, 201, 190, 0.07), transparent 45%),
     linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 45%, var(--bg0) 100%);
   z-index: 0;
 }
@@ -354,6 +354,19 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+.hero__title-focus {
+  display: block;
+  margin-top: 0.35rem;
+  max-width: 26rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.2vw, 1.28rem);
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  color: var(--accent2);
+  line-height: 1.35;
 }
 
 .hero__tagline {

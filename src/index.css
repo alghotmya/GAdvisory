@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&display=swap');
 
 :root {
-  --bg0: #07080f;
-  --bg1: #0d1019;
-  --bg2: #121726;
+  --bg0: #060a10;
+  --bg1: #0c1219;
+  --bg2: #101a22;
   --ink: #e8eaef;
-  --muted: #9aa3b5;
-  --dim: #5c667a;
+  --muted: #96a3b2;
+  --dim: #5c6b7a;
+  /* Gold: executive trust; teal: customer success / renewal energy */
   --accent: #c9a962;
-  --accent2: #7eb8da;
+  --accent2: #6ec9be;
   --line: rgba(255, 255, 255, 0.08);
-  --glow: rgba(201, 169, 98, 0.35);
+  --glow: rgba(110, 201, 190, 0.28);
   --font-sans: 'DM Sans', system-ui, sans-serif;
   --font-display: 'Fraunces', Georgia, serif;
   --radius: 14px;
