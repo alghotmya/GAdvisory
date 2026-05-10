@@ -16,6 +16,7 @@ import {
   profilePhotos,
 } from './content'
 import { headlines, type SiteLang } from './headlines'
+import { sendPageViewPing } from './analytics'
 
 function getNavLinks(lang: SiteLang) {
   const h = headlines[lang]
@@ -103,6 +104,14 @@ function App() {
     window.addEventListener('hashchange', applyHash)
     return () => window.removeEventListener('hashchange', applyHash)
   }, [])
+
+  useEffect(() => {
+    if (!import.meta.env.VITE_PAGE_VIEW_WEBHOOK_URL) return
+    sendPageViewPing(lang)
+    const onHash = () => sendPageViewPing(lang)
+    window.addEventListener('hashchange', onHash)
+    return () => window.removeEventListener('hashchange', onHash)
+  }, [lang])
 
   return (
     <div className="app">
@@ -526,9 +535,16 @@ function App() {
       </main>
 
       <footer className="border-t border-border/60 py-6 text-center text-sm text-muted-foreground">
-        <span>© {new Date().getFullYear()} {profile.name}</span>
-        <span className="mx-2 opacity-50">·</span>
-        <span>{h.footerLine}</span>
+        <div>
+          <span>© {new Date().getFullYear()} {profile.name}</span>
+          <span className="mx-2 opacity-50">·</span>
+          <span>{h.footerLine}</span>
+        </div>
+        {import.meta.env.VITE_PAGE_VIEW_WEBHOOK_URL ? (
+          <p className="mx-auto mt-4 max-w-2xl px-4 text-xs leading-relaxed text-muted-foreground/90">
+            {h.privacyAnalytics}
+          </p>
+        ) : null}
       </footer>
     </div>
   )
