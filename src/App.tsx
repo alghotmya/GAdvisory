@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
+import ReactMarkdown from 'react-markdown'
 import './App.css'
 import {
   credentials,
@@ -9,14 +10,20 @@ import {
   profile,
   profilePhotos,
 } from './content'
+import { articles } from './articles/loadArticles'
+import { headlines, type SiteLang } from './headlines'
 
-const navLinks = [
-  { id: 'mandate', label: 'Mandate' },
-  { id: 'domains', label: 'Domains' },
-  { id: 'engagements', label: 'Engagements' },
-  { id: 'knowledge', label: 'Knowledge' },
-  { id: 'connect', label: 'Connect' },
-]
+function getNavLinks(lang: SiteLang) {
+  const h = headlines[lang]
+  return [
+    { id: 'mandate', label: 'Mandate' },
+    { id: 'domains', label: 'Domains' },
+    { id: 'engagements', label: 'Engagements' },
+    { id: 'knowledge', label: 'Knowledge' },
+    { id: 'articles', label: h.articlesNav },
+    { id: 'connect', label: 'Connect' },
+  ]
+}
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null)
@@ -62,7 +69,31 @@ function Section({
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [photoIndex, setPhotoIndex] = useState(0)
+  const [lang, setLang] = useState<SiteLang>('en')
+  const [articleId, setArticleId] = useState<number | null>(null)
+
   const activePhoto = profilePhotos[photoIndex] ?? profilePhotos[0]
+  const h = headlines[lang]
+  const navLinks = getNavLinks(lang)
+  const selectedArticle = articleId != null ? articles.find((a) => a.id === articleId) : null
+
+  useEffect(() => {
+    document.documentElement.lang = lang === 'fr' ? 'fr' : 'en'
+  }, [lang])
+
+  useEffect(() => {
+    const applyHash = () => {
+      const raw = window.location.hash.replace(/^#/, '')
+      if (raw.startsWith('article-')) {
+        const slug = raw.slice('article-'.length)
+        const a = articles.find((x) => x.slug === slug)
+        if (a) setArticleId(a.id)
+      }
+    }
+    applyHash()
+    window.addEventListener('hashchange', applyHash)
+    return () => window.removeEventListener('hashchange', applyHash)
+  }, [])
 
   return (
     <div className="app">
@@ -119,7 +150,7 @@ function App() {
                   decoding="async"
                 />
               </div>
-              <figcaption className="hero__caption">Select a portrait</figcaption>
+              <figcaption className="hero__caption">{h.heroCaption}</figcaption>
             </figure>
             <div className="hero__thumbs" role="group" aria-label="Profile photos">
               {profilePhotos.map((p, i) => (
@@ -137,16 +168,34 @@ function App() {
             </div>
           </div>
           <div className="hero__content">
+            <div className="hero__lang" role="group" aria-label={h.langLabel}>
+              <button
+                type="button"
+                className={`hero__lang-btn ${lang === 'en' ? 'hero__lang-btn--active' : ''}`}
+                onClick={() => setLang('en')}
+                aria-pressed={lang === 'en'}
+              >
+                {h.langEn}
+              </button>
+              <button
+                type="button"
+                className={`hero__lang-btn ${lang === 'fr' ? 'hero__lang-btn--active' : ''}`}
+                onClick={() => setLang('fr')}
+                aria-pressed={lang === 'fr'}
+              >
+                {h.langFr}
+              </button>
+            </div>
             <p className="hero__eyebrow">
               <span className="hero__pulse" aria-hidden />
-              Engagement · Customer success · Cloud transformation
+              {h.eyebrow}
             </p>
             <h1 className="hero__title">
               {profile.name}
-              <span className="hero__title-sub">{profile.shortTitle}</span>
-              <span className="hero__title-focus">{profile.roleFocus}</span>
+              <span className="hero__title-sub">{h.shortTitle}</span>
+              <span className="hero__title-focus">{h.roleFocus}</span>
             </h1>
-            <p className="hero__tagline">{profile.tagline}</p>
+            <p className="hero__tagline">{h.tagline}</p>
             <p className="hero__loc">{profile.location}</p>
             <div className="hero__actions">
               <a className="btn btn--primary" href="/resume.pdf" download>
@@ -290,6 +339,56 @@ function App() {
           </div>
         </Section>
 
+        <Section id="articles" className="section section--articles">
+          <div className="section__head">
+            <h2 className="section__title">{h.articlesSectionTitle}</h2>
+            <p className="section__lede">{h.articlesSectionLede}</p>
+            {h.articlesLangNote ? (
+              <p className="articles__lang-note">{h.articlesLangNote}</p>
+            ) : null}
+          </div>
+
+          {selectedArticle ? (
+            <div className="article-reader">
+              <button
+                type="button"
+                className="btn btn--ghost article-reader__back"
+                onClick={() => {
+                  setArticleId(null)
+                  window.location.hash = '#articles'
+                }}
+              >
+                {h.backToArticles}
+              </button>
+              <div className="article-md">
+                <ReactMarkdown>{selectedArticle.body}</ReactMarkdown>
+              </div>
+            </div>
+          ) : (
+            <ul className="articles__grid">
+              {articles.map((a) => (
+                <li key={a.id}>
+                  <article className="articles__card">
+                    <span className="articles__num">{String(a.id).padStart(2, '0')}</span>
+                    <h3 className="articles__card-title">{a.title}</h3>
+                    {a.takeaway ? <p className="articles__takeaway">{a.takeaway}</p> : null}
+                    <button
+                      type="button"
+                      className="articles__read btn btn--ghost"
+                      onClick={() => {
+                        setArticleId(a.id)
+                        window.location.hash = `#article-${a.slug}`
+                      }}
+                    >
+                      {h.readArticle}
+                    </button>
+                  </article>
+                </li>
+              ))}
+            </ul>
+          )}
+        </Section>
+
         <Section id="connect" className="section section--connect">
           <div className="connect">
             <h2 className="connect__title">Begin the conversation</h2>
@@ -317,7 +416,7 @@ function App() {
       <footer className="footer">
         <span>© {new Date().getFullYear()} {profile.name}</span>
         <span className="footer__sep">·</span>
-        <span>Senior strategic engagement · Customer success · Cloud transformation</span>
+        <span>{h.footerLine}</span>
       </footer>
     </div>
   )

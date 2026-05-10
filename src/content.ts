@@ -4,10 +4,6 @@
 
 export const profile = {
   name: 'Ahmed Alghotmy',
-  shortTitle: 'Senior Strategic Engagement Consultant',
-  roleFocus: 'Customer Success & Cloud Transformation Advisor',
-  tagline:
-    'I steward strategic engagements end-to-end—aligning executives, delivery teams, and partners so cloud transformation delivers durable adoption, measurable outcomes, and trusted customer relationships.',
   location: 'Canada · Bilingual EN / FR',
   linkedinUrl: 'https://www.linkedin.com/in/ahmed-alghotmy',
   contactEmail: '',
