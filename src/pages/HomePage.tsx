@@ -29,6 +29,9 @@ export function HomePage() {
         <Link className="tile" to="/modules">
           Modules
         </Link>
+        <Link className="tile" to="/system-design">
+          System design blueprint
+        </Link>
       </nav>
     </section>
   );

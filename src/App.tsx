@@ -7,6 +7,7 @@ import { DashboardPage } from "./pages/DashboardPage";
 import { LookupsPage } from "./pages/LookupsPage";
 import { RelationshipsPage } from "./pages/RelationshipsPage";
 import { FieldDictionaryPage } from "./pages/FieldDictionaryPage";
+import { SystemDesignBlueprintPage } from "./pages/SystemDesignBlueprintPage";
 import "./App.css";
 
 function Shell() {
@@ -27,6 +28,7 @@ function Shell() {
           <Link to="/relationships">Relationships</Link>
           <Link to="/field-dictionary">Fields</Link>
           <Link to="/modules">Modules</Link>
+          <Link to="/system-design">Blueprint</Link>
         </nav>
       </header>
       <main className="content">
@@ -38,6 +40,7 @@ function Shell() {
           <Route path="/lookups" element={<LookupsPage />} />
           <Route path="/relationships" element={<RelationshipsPage />} />
           <Route path="/field-dictionary" element={<FieldDictionaryPage />} />
+          <Route path="/system-design" element={<SystemDesignBlueprintPage />} />
           <Route path="/modules" element={<ModulesPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
