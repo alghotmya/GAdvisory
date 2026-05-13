@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import {
   AdvisoryWorkflowSvg,
   DynamoKeysSvg,
@@ -8,10 +9,12 @@ import {
 
 const toc = [
   { id: "overview", label: "Overview & phases" },
+  { id: "lob-360", label: "What is LOB 360?" },
   { id: "architecture", label: "High-level architecture" },
   { id: "frontend", label: "Frontend" },
   { id: "backend", label: "Backend & APIs" },
   { id: "database", label: "Database & entities" },
+  { id: "traceability-lookups", label: "Traceability & lookups" },
   { id: "auth", label: "Authentication & authorization" },
   { id: "integrations", label: "Integrations" },
   { id: "infrastructure", label: "Infrastructure" },
@@ -21,6 +24,15 @@ const toc = [
 ] as const;
 
 export function SystemDesignBlueprintPage() {
+  const location = useLocation();
+  useEffect(() => {
+    const id = location.hash.replace(/^#/, "");
+    if (!id) return;
+    requestAnimationFrame(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, [location.hash, location.pathname]);
+
   return (
     <article className="blueprint-page panel panel-wide">
       <header className="blueprint-header">
@@ -75,6 +87,40 @@ export function SystemDesignBlueprintPage() {
         </div>
       </section>
 
+      <section id="lob-360" className="blueprint-section">
+        <h2>What is LOB 360?</h2>
+        <p className="lede subtle">
+          In this product, <strong>LOB</strong> means a <strong>line of business</strong>{" "}
+          (or program area) under advisory—for example a ministry service such as a
+          contact centre or digital channel that is being assessed for experience
+          platform (EP) maturity, gaps, and follow-up actions.
+        </p>
+        <p className="lede subtle">
+          <strong>LOB 360</strong> is the <em>360-degree workspace</em> for one LOB: a
+          single place to see the profile (owners, maturity, health, review dates) and
+          every linked advisory list—outcomes, capability requirements, gap findings,
+          enhancement backlog, risks and decisions, training and adoption, KPIs,
+          governance meetings, and document artifacts. All child rows reference the same{" "}
+          <code className="inline-code">LOB ID</code> (and usually{" "}
+          <code className="inline-code">LOB Name</code>) so work stays traceable from
+          strategy down to evidence.
+        </p>
+        <ul className="blueprint-list">
+          <li>
+            <strong>List view</strong> (<Link to="/lobs">/lobs</Link>): pick a LOB to open
+            its workspace.
+          </li>
+          <li>
+            <strong>Detail view</strong> (<code className="inline-code">/lobs/:id</code>
+            ): tabs mirror the Excel lists for that LOB only.
+          </li>
+          <li>
+            <strong>Dashboard</strong> aggregates portfolio metrics across LOBs for
+            executive review, without replacing the per-LOB 360 view.
+          </li>
+        </ul>
+      </section>
+
       <section id="architecture" className="blueprint-section">
         <h2>High-level architecture</h2>
         <p className="lede subtle">
@@ -105,7 +151,10 @@ export function SystemDesignBlueprintPage() {
             <tr>
               <td>UI</td>
               <td>React 18, JSX</td>
-              <td>LOB 360, dashboard, lookups, relationship map, field dictionary.</td>
+              <td>
+                LOB 360 (per-LOB tabs), portfolio dashboard, field dictionary, and this
+                blueprint.
+              </td>
             </tr>
             <tr>
               <td>Routing</td>
@@ -193,8 +242,8 @@ export function SystemDesignBlueprintPage() {
         <figure className="blueprint-figure">
           <EntityRelationshipSvg />
           <figcaption>
-            Logical relationships aligned with the Excel workbook and{" "}
-            <Link to="/relationships">Relationship map</Link> screen.
+            Logical relationships aligned with the Excel workbook (see also{" "}
+            <a href="#traceability-lookups">Traceability and reference lookups</a>).
           </figcaption>
         </figure>
         <figure className="blueprint-figure">
@@ -204,6 +253,105 @@ export function SystemDesignBlueprintPage() {
             type and business id.
           </figcaption>
         </figure>
+      </section>
+
+      <section id="traceability-lookups" className="blueprint-section">
+        <h2>Traceability and reference lookups</h2>
+        <p className="lede subtle">
+          The workbook&apos;s <em>Relationship Map</em> and <em>Lookup Values</em> sheets
+          are reference material: they define how lists link to each other and which
+          canonical values (health, priority, status, and so on) should appear in
+          dropdowns. That material is documented here so it is not duplicated as
+          separate top-level app screens. Legacy paths <code className="inline-code">
+            /relationships
+          </code>{" "}
+          and <code className="inline-code">/lookups</code> redirect to this section.
+        </p>
+
+        <h3>List-to-list traceability (from the Relationship Map)</h3>
+        <p className="lede subtle">
+          Foreign keys in the data model follow these parent → child relationships (use
+          IDs in APIs and DynamoDB; display names are denormalized for readability).
+        </p>
+        <table className="blueprint-table">
+          <thead>
+            <tr>
+              <th>Parent list</th>
+              <th>Key on parent</th>
+              <th>Child list</th>
+              <th>Matching field on child</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>LOB Profile</td>
+              <td>LOB ID</td>
+              <td>Outcomes</td>
+              <td>LOB ID</td>
+            </tr>
+            <tr>
+              <td>Outcomes</td>
+              <td>Outcome ID</td>
+              <td>Capabilities Requirements</td>
+              <td>Related Outcome ID</td>
+            </tr>
+            <tr>
+              <td>Capabilities Requirements</td>
+              <td>Requirement ID</td>
+              <td>Gap Advisory Findings</td>
+              <td>Related Requirement ID</td>
+            </tr>
+            <tr>
+              <td>Gap Advisory Findings</td>
+              <td>Finding ID</td>
+              <td>Enhancement Action Backlog</td>
+              <td>Related Gap ID</td>
+            </tr>
+            <tr>
+              <td>Enhancement Action Backlog</td>
+              <td>Action ID</td>
+              <td>Risks Decisions Escalations</td>
+              <td>Related Action ID</td>
+            </tr>
+            <tr>
+              <td>Outcomes</td>
+              <td>Outcome ID</td>
+              <td>KPI Measurement</td>
+              <td>Related Outcome ID</td>
+            </tr>
+            <tr>
+              <td>Outcomes / capability area</td>
+              <td>Outcome ID / capability area</td>
+              <td>Training Adoption</td>
+              <td>Related Outcome ID / capability area</td>
+            </tr>
+            <tr>
+              <td>Any list</td>
+              <td>Relevant IDs</td>
+              <td>Meeting Governance Log</td>
+              <td>Related Action ID, Related Risk / Decision ID</td>
+            </tr>
+            <tr>
+              <td>Any list</td>
+              <td>Relevant IDs</td>
+              <td>Document Artifact Register</td>
+              <td>Related Outcome ID, Related Action ID</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Lookup values sheet</h3>
+        <p className="lede subtle">
+          The workbook&apos;s <em>Lookup Values</em> grid holds approved choice columns
+          used across lists—for example <strong>Health</strong> (Green, Amber, Red,
+          Grey), <strong>Priority</strong>, <strong>Status</strong>,{" "}
+          <strong>Capability Area</strong>, <strong>Gap Type</strong>,{" "}
+          <strong>Request Type</strong>, <strong>Meeting Type</strong>, and{" "}
+          <strong>Dependency</strong>. In Phase 2, expose these via a read-mostly API
+          (see <code className="inline-code">GET /v1/orgs/{"{orgId}"}/lookups</code>) or
+          replicate them as choice sets in the SPA build. Phase 1 keeps them inside{" "}
+          <code className="inline-code">normalizedSeed.json</code> for development.
+        </p>
       </section>
 
       <section id="auth" className="blueprint-section">

@@ -7,8 +7,10 @@ export function HomePage() {
       <p className="lede">
         EP Navigator mirrors the GoO EP Advisory Control Tower workbook: LOB
         profiles, outcomes, capabilities, gaps, enhancement backlog, risks,
-        training, KPIs, meetings, artifacts, lookups, and field dictionary—backed
-        by a single-table DynamoDB layout and S3-ready attachment keys.
+        training, KPIs, meetings, and artifacts—backed by a single-table
+        DynamoDB layout and S3-ready attachment keys. Traceability between lists
+        and canonical lookup values are documented on the system design page so
+        navigation stays focused on operational screens.
       </p>
       <nav className="tiles">
         <Link className="tile" to="/dashboard">
@@ -16,12 +18,6 @@ export function HomePage() {
         </Link>
         <Link className="tile" to="/lobs">
           LOB 360
-        </Link>
-        <Link className="tile" to="/lookups">
-          Lookup values
-        </Link>
-        <Link className="tile" to="/relationships">
-          Relationship map
         </Link>
         <Link className="tile" to="/field-dictionary">
           Field dictionary

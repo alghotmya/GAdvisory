@@ -4,8 +4,6 @@ import { LobDetailPage } from "./pages/LobDetailPage";
 import { LobsPage } from "./pages/LobsPage";
 import { ModulesPage } from "./pages/ModulesPage";
 import { DashboardPage } from "./pages/DashboardPage";
-import { LookupsPage } from "./pages/LookupsPage";
-import { RelationshipsPage } from "./pages/RelationshipsPage";
 import { FieldDictionaryPage } from "./pages/FieldDictionaryPage";
 import { SystemDesignBlueprintPage } from "./pages/SystemDesignBlueprintPage";
 import "./App.css";
@@ -24,8 +22,6 @@ function Shell() {
           <Link to="/">Home</Link>
           <Link to="/dashboard">Dashboard</Link>
           <Link to="/lobs">LOB 360</Link>
-          <Link to="/lookups">Lookups</Link>
-          <Link to="/relationships">Relationships</Link>
           <Link to="/field-dictionary">Fields</Link>
           <Link to="/modules">Modules</Link>
           <Link to="/system-design">Blueprint</Link>
@@ -37,8 +33,14 @@ function Shell() {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/lobs" element={<LobsPage />} />
           <Route path="/lobs/:id" element={<LobDetailPage />} />
-          <Route path="/lookups" element={<LookupsPage />} />
-          <Route path="/relationships" element={<RelationshipsPage />} />
+          <Route
+            path="/lookups"
+            element={<Navigate to="/system-design#traceability-lookups" replace />}
+          />
+          <Route
+            path="/relationships"
+            element={<Navigate to="/system-design#traceability-lookups" replace />}
+          />
           <Route path="/field-dictionary" element={<FieldDictionaryPage />} />
           <Route path="/system-design" element={<SystemDesignBlueprintPage />} />
           <Route path="/modules" element={<ModulesPage />} />

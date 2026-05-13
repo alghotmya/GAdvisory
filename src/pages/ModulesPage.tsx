@@ -46,6 +46,11 @@ const modules: { name: string; desc: string; to: string }[] = [
     desc: "Meeting log and portfolio dashboard.",
     to: "/dashboard",
   },
+  {
+    name: "Traceability & lookups",
+    desc: "How lists link and which canonical values apply—documented on the blueprint.",
+    to: "/system-design#traceability-lookups",
+  },
 ];
 
 export function ModulesPage() {
@@ -54,8 +59,9 @@ export function ModulesPage() {
       <h2>Core modules</h2>
       <p className="lede">
         Each workbook list maps to a DynamoDB sort-key prefix under the LOB
-        partition. Use LOB 360 for per-LOB tabs; dashboard and reference sheets
-        are separate routes.
+        partition. Use <strong>LOB 360</strong> for per-LOB tabs; open the system
+        design blueprint for traceability, lookups, and architecture. The dashboard
+        aggregates across LOBs.
       </p>
       <ul className="module-list">
         {modules.map((m) => (
