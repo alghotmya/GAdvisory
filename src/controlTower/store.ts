@@ -326,7 +326,7 @@ function sheet(name: string): Raw[] {
   return Array.isArray(a) ? a : [];
 }
 
-function buildControlTowerBundle(): ControlTowerBundle {
+export function buildControlTowerBundle(): ControlTowerBundle {
   return {
     lobProfiles: sheet("LOB Profile").map(mapLob).filter((p) => p.lobId),
     outcomes: sheet("Outcomes").map(mapOutcome).filter((o) => o.outcomeId),
@@ -397,107 +397,95 @@ export function previewDynamoKeys(
   };
 }
 
-const _bundle = buildControlTowerBundle();
+export function selectLobWorkspace(bundle: ControlTowerBundle, lobId: string): LobWorkspace {
+  return {
+    profile: bundle.lobProfiles.find((p) => p.lobId === lobId),
+    outcomes: bundle.outcomes.filter((o) => o.lobId === lobId),
+    requirements: bundle.requirements.filter((r) => r.lobId === lobId),
+    gapFindings: bundle.gapFindings.filter((g) => g.lobId === lobId),
+    actions: bundle.actions.filter((a) => a.lobId === lobId),
+    risksDecisions: bundle.risksDecisions.filter((r) => r.lobId === lobId),
+    training: bundle.training.filter((t) => t.lobId === lobId),
+    kpis: bundle.kpis.filter((k) => k.lobId === lobId),
+    meetings: bundle.meetings.filter((m) => m.lobId === lobId),
+    artifacts: bundle.artifacts.filter((a) => a.lobId === lobId),
+  };
+}
 
-export const controlTowerStore = {
-  get bundle(): ControlTowerBundle {
-    return _bundle;
-  },
+export function computeDashboard(bundle: ControlTowerBundle): DashboardSnapshot {
+  const actions = bundle.actions;
+  const openActions = actions.filter((a) => isOpenAction(a.status));
+  const highCritical = openActions.filter((a) => ["Critical", "High"].includes(a.priority));
+  const rde = bundle.risksDecisions;
+  const openRde = rde.filter((r) => !CLOSED.has(r.status));
+  const decisions = rde.filter((r) => r.type === "Decision");
 
-  listLobs(): LobProfile[] {
-    return _bundle.lobProfiles;
-  },
+  const healthCounts: Record<string, number> = {};
+  for (const p of bundle.lobProfiles) {
+    const h = p.health || "Unknown";
+    healthCounts[h] = (healthCounts[h] ?? 0) + 1;
+  }
+  const priorityCounts: Record<string, number> = {};
+  for (const a of actions) {
+    const p = a.priority || "Unknown";
+    priorityCounts[p] = (priorityCounts[p] ?? 0) + 1;
+  }
 
-  getLob(lobId: string): LobProfile | undefined {
-    return _bundle.lobProfiles.find((p) => p.lobId === lobId);
-  },
+  return {
+    totalLobs: bundle.lobProfiles.length,
+    openActions: openActions.length,
+    highCriticalActions: highCritical.length,
+    openRisksDecisions: openRde.length,
+    decisionItems: decisions.length,
+    healthCounts,
+    priorityCounts,
+  };
+}
 
-  getLobWorkspace(lobId: string): LobWorkspace {
-    const b = _bundle;
-    return {
-      profile: b.lobProfiles.find((p) => p.lobId === lobId),
-      outcomes: b.outcomes.filter((o) => o.lobId === lobId),
-      requirements: b.requirements.filter((r) => r.lobId === lobId),
-      gapFindings: b.gapFindings.filter((g) => g.lobId === lobId),
-      actions: b.actions.filter((a) => a.lobId === lobId),
-      risksDecisions: b.risksDecisions.filter((r) => r.lobId === lobId),
-      training: b.training.filter((t) => t.lobId === lobId),
-      kpis: b.kpis.filter((k) => k.lobId === lobId),
-      meetings: b.meetings.filter((m) => m.lobId === lobId),
-      artifacts: b.artifacts.filter((a) => a.lobId === lobId),
-    };
-  },
+export function getLob(bundle: ControlTowerBundle, lobId: string): LobProfile | undefined {
+  return bundle.lobProfiles.find((p) => p.lobId === lobId);
+}
 
-  getDashboard(): DashboardSnapshot {
-    const b = _bundle;
-    const actions = b.actions;
-    const openActions = actions.filter((a) => isOpenAction(a.status));
-    const highCritical = openActions.filter((a) =>
-      ["Critical", "High"].includes(a.priority),
-    );
-    const rde = b.risksDecisions;
-    const openRde = rde.filter((r) => !CLOSED.has(r.status));
-    const decisions = rde.filter((r) => r.type === "Decision");
+export function listLobs(bundle: ControlTowerBundle): LobProfile[] {
+  return bundle.lobProfiles;
+}
 
-    const healthCounts: Record<string, number> = {};
-    for (const p of b.lobProfiles) {
-      const h = p.health || "Unknown";
-      healthCounts[h] = (healthCounts[h] ?? 0) + 1;
-    }
-    const priorityCounts: Record<string, number> = {};
-    for (const a of actions) {
-      const p = a.priority || "Unknown";
-      priorityCounts[p] = (priorityCounts[p] ?? 0) + 1;
-    }
+export function keyForProfile(lobId: string): DynamoKeyPreview {
+  return previewDynamoKeys(DEFAULT_ORG_ID, lobId, profileSortKey());
+}
 
-    return {
-      totalLobs: b.lobProfiles.length,
-      openActions: openActions.length,
-      highCriticalActions: highCritical.length,
-      openRisksDecisions: openRde.length,
-      decisionItems: decisions.length,
-      healthCounts,
-      priorityCounts,
-    };
-  },
+export function keyForOutcome(lobId: string, outcomeId: string): DynamoKeyPreview {
+  return previewDynamoKeys(DEFAULT_ORG_ID, lobId, outcomeSortKey(outcomeId));
+}
 
-  keyForProfile(lobId: string): DynamoKeyPreview {
-    return previewDynamoKeys(DEFAULT_ORG_ID, lobId, profileSortKey());
-  },
+export function keyForRequirement(lobId: string, requirementId: string): DynamoKeyPreview {
+  return previewDynamoKeys(DEFAULT_ORG_ID, lobId, requirementSortKey(requirementId));
+}
 
-  keyForOutcome(lobId: string, outcomeId: string): DynamoKeyPreview {
-    return previewDynamoKeys(DEFAULT_ORG_ID, lobId, outcomeSortKey(outcomeId));
-  },
+export function keyForGap(lobId: string, findingId: string): DynamoKeyPreview {
+  return previewDynamoKeys(DEFAULT_ORG_ID, lobId, gapSortKey(findingId));
+}
 
-  keyForRequirement(lobId: string, requirementId: string): DynamoKeyPreview {
-    return previewDynamoKeys(DEFAULT_ORG_ID, lobId, requirementSortKey(requirementId));
-  },
+export function keyForAction(lobId: string, actionId: string): DynamoKeyPreview {
+  return previewDynamoKeys(DEFAULT_ORG_ID, lobId, actionSortKey(actionId));
+}
 
-  keyForGap(lobId: string, findingId: string): DynamoKeyPreview {
-    return previewDynamoKeys(DEFAULT_ORG_ID, lobId, gapSortKey(findingId));
-  },
+export function keyForRisk(lobId: string, riskDecisionId: string): DynamoKeyPreview {
+  return previewDynamoKeys(DEFAULT_ORG_ID, lobId, riskDecisionSortKey(riskDecisionId));
+}
 
-  keyForAction(lobId: string, actionId: string): DynamoKeyPreview {
-    return previewDynamoKeys(DEFAULT_ORG_ID, lobId, actionSortKey(actionId));
-  },
+export function keyForTraining(lobId: string, trainingId: string): DynamoKeyPreview {
+  return previewDynamoKeys(DEFAULT_ORG_ID, lobId, trainingSortKey(trainingId));
+}
 
-  keyForRisk(lobId: string, riskDecisionId: string): DynamoKeyPreview {
-    return previewDynamoKeys(DEFAULT_ORG_ID, lobId, riskDecisionSortKey(riskDecisionId));
-  },
+export function keyForKpi(lobId: string, kpiId: string): DynamoKeyPreview {
+  return previewDynamoKeys(DEFAULT_ORG_ID, lobId, kpiSortKey(kpiId));
+}
 
-  keyForTraining(lobId: string, trainingId: string): DynamoKeyPreview {
-    return previewDynamoKeys(DEFAULT_ORG_ID, lobId, trainingSortKey(trainingId));
-  },
+export function keyForMeeting(lobId: string, meetingId: string): DynamoKeyPreview {
+  return previewDynamoKeys(DEFAULT_ORG_ID, lobId, meetingSortKey(meetingId));
+}
 
-  keyForKpi(lobId: string, kpiId: string): DynamoKeyPreview {
-    return previewDynamoKeys(DEFAULT_ORG_ID, lobId, kpiSortKey(kpiId));
-  },
-
-  keyForMeeting(lobId: string, meetingId: string): DynamoKeyPreview {
-    return previewDynamoKeys(DEFAULT_ORG_ID, lobId, meetingSortKey(meetingId));
-  },
-
-  keyForArtifact(lobId: string, artifactId: string): DynamoKeyPreview {
-    return previewDynamoKeys(DEFAULT_ORG_ID, lobId, artifactSortKey(artifactId));
-  },
-};
+export function keyForArtifact(lobId: string, artifactId: string): DynamoKeyPreview {
+  return previewDynamoKeys(DEFAULT_ORG_ID, lobId, artifactSortKey(artifactId));
+}

@@ -163,17 +163,18 @@ export function SystemDesignBlueprintPage() {
             </tr>
             <tr>
               <td>State / data</td>
-              <td>Module store + JSON seed</td>
+              <td>React context + localStorage + JSON seed</td>
               <td>
-                Phase 1: <code className="inline-code">controlTowerStore</code>. Phase 2:
-                replace with <code className="inline-code">fetch</code> + React Query or
-                equivalent.
+                Phase 1: <code className="inline-code">ControlTowerProvider</code> /{" "}
+                <code className="inline-code">useControlTower()</code> hydrate from seed
+                and persist edits in the browser. Phase 2: replace with{" "}
+                <code className="inline-code">fetch</code> + React Query or equivalent.
               </td>
             </tr>
             <tr>
               <td>Styling</td>
-              <td>CSS (App.css)</td>
-              <td>Responsive layout, tables, tabs, blueprint figures.</td>
+              <td>Tailwind + shadcn/ui primitives + App.css shell</td>
+              <td>Console-inspired neutrals, cards, dialogs, data tables.</td>
             </tr>
           </tbody>
         </table>
@@ -253,6 +254,375 @@ export function SystemDesignBlueprintPage() {
             type and business id.
           </figcaption>
         </figure>
+
+        <h3>Logical items (single-table “entity types”)</h3>
+        <p className="lede subtle">
+          Each row below is one <strong>logical item type</strong> stored under the same
+          LOB partition (<code className="inline-code">pk = ORG#…#LOB#…</code>). Columns
+          are the application fields persisted on that item (see also the in-app{" "}
+          <Link to="/field-dictionary">field dictionary</Link> for workbook column
+          metadata). Foreign keys are plain string attributes referencing sibling items in
+          the same partition.
+        </p>
+
+        <h4>LOB profile</h4>
+        <table className="blueprint-table blueprint-table-compact">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code className="inline-code">orgId</code></td>
+              <td>Tenant id (constant in Phase 1 seed).</td>
+            </tr>
+            <tr>
+              <td><code className="inline-code">lobId</code></td>
+              <td>Primary business id for the LOB; partition anchor.</td>
+            </tr>
+            <tr>
+              <td><code className="inline-code">lobName</code></td>
+              <td>Display name; denormalized onto child rows for readability.</td>
+            </tr>
+            <tr>
+              <td><code className="inline-code">ministryCluster</code></td>
+              <td>Program / cluster label.</td>
+            </tr>
+            <tr>
+              <td><code className="inline-code">businessOwner</code>, <code className="inline-code">technicalOwner</code></td>
+              <td>RACI-style ownership.</td>
+            </tr>
+            <tr>
+              <td><code className="inline-code">bellAdvisorCsm</code>, <code className="inline-code">implementationPartner</code></td>
+              <td>Advisory and SI contacts.</td>
+            </tr>
+            <tr>
+              <td><code className="inline-code">supportModel</code></td>
+              <td>Run / sustain model.</td>
+            </tr>
+            <tr>
+              <td><code className="inline-code">currentEpStatus</code></td>
+              <td>EP lifecycle status on the portfolio radar.</td>
+            </tr>
+            <tr>
+              <td><code className="inline-code">capabilitiesEnabled</code></td>
+              <td>Comma- or narrative list of enabled capabilities.</td>
+            </tr>
+            <tr>
+              <td><code className="inline-code">maturityLevel</code></td>
+              <td>Maturity assessment.</td>
+            </tr>
+            <tr>
+              <td><code className="inline-code">health</code></td>
+              <td>RAG health; aligns with lookup values sheet.</td>
+            </tr>
+            <tr>
+              <td><code className="inline-code">lastReviewDate</code>, <code className="inline-code">nextReviewDate</code></td>
+              <td>Governance cadence.</td>
+            </tr>
+            <tr>
+              <td><code className="inline-code">notes</code></td>
+              <td>Free text.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Outcome</h4>
+        <p className="lede subtle">
+          FK: <code className="inline-code">lobId</code> → LOB profile. Referenced by
+          requirements, gaps (optional), training, KPIs, artifacts (optional).
+        </p>
+        <table className="blueprint-table blueprint-table-compact">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code className="inline-code">outcomeId</code></td>
+              <td>Primary id; referenced as <code className="inline-code">relatedOutcomeId</code>.</td>
+            </tr>
+            <tr>
+              <td><code className="inline-code">businessOutcome</code>, narrative fields</td>
+              <td>Intent, pain, future state, executive narrative.</td>
+            </tr>
+            <tr>
+              <td><code className="inline-code">successMetricKpi</code>, <code className="inline-code">baselineValue</code>, <code className="inline-code">targetValue</code></td>
+              <td>Embedded success measures (detail KPIs live in KPI list).</td>
+            </tr>
+            <tr>
+              <td><code className="inline-code">measurementSource</code>, <code className="inline-code">confidenceLevel</code></td>
+              <td>Evidence posture.</td>
+            </tr>
+            <tr>
+              <td><code className="inline-code">advisoryPriority</code>, <code className="inline-code">health</code>, <code className="inline-code">status</code></td>
+              <td>Portfolio triage and workflow.</td>
+            </tr>
+            <tr>
+              <td><code className="inline-code">owner</code>, <code className="inline-code">targetReviewDate</code>, <code className="inline-code">notes</code></td>
+              <td>Ownership and follow-up.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Capability requirement</h4>
+        <p className="lede subtle">
+          FK: <code className="inline-code">relatedOutcomeId</code> → Outcome;{" "}
+          <code className="inline-code">lobId</code> → LOB.
+        </p>
+        <table className="blueprint-table blueprint-table-compact">
+          <thead>
+            <tr>
+              <th>Field group</th>
+              <th>Members</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Identity</td>
+              <td><code className="inline-code">requirementId</code>, <code className="inline-code">lobId</code>, <code className="inline-code">lobName</code></td>
+            </tr>
+            <tr>
+              <td>Scope</td>
+              <td><code className="inline-code">capabilityArea</code>, <code className="inline-code">specificRequirement</code></td>
+            </tr>
+            <tr>
+              <td>As-is / to-be</td>
+              <td><code className="inline-code">currentState</code>, <code className="inline-code">requiredFutureState</code>, <code className="inline-code">existingFeatureAvailable</code>, <code className="inline-code">bestPracticeAvailable</code></td>
+            </tr>
+            <tr>
+              <td>Classification</td>
+              <td><code className="inline-code">gapType</code>, <code className="inline-code">requiresCr</code>, <code className="inline-code">complexity</code></td>
+            </tr>
+            <tr>
+              <td>Workflow</td>
+              <td><code className="inline-code">recommendation</code>, <code className="inline-code">owner</code>, <code className="inline-code">status</code>, <code className="inline-code">targetDate</code>, <code className="inline-code">notes</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Gap finding</h4>
+        <p className="lede subtle">
+          FK: <code className="inline-code">relatedRequirementId</code>,{" "}
+          <code className="inline-code">relatedOutcomeId</code>, <code className="inline-code">lobId</code>.
+        </p>
+        <table className="blueprint-table blueprint-table-compact">
+          <thead>
+            <tr>
+              <th>Field group</th>
+              <th>Members</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Identity</td>
+              <td><code className="inline-code">findingId</code>, LOB keys</td>
+            </tr>
+            <tr>
+              <td>Observation</td>
+              <td><code className="inline-code">findingObservation</code>, <code className="inline-code">impact</code>, <code className="inline-code">gapType</code></td>
+            </tr>
+            <tr>
+              <td>Advisory</td>
+              <td><code className="inline-code">advisoryRecommendation</code>, <code className="inline-code">expectedValue</code>, <code className="inline-code">decisionNeeded</code></td>
+            </tr>
+            <tr>
+              <td>Controls</td>
+              <td><code className="inline-code">priority</code>, <code className="inline-code">health</code>, <code className="inline-code">status</code>, <code className="inline-code">owner</code>, dates, <code className="inline-code">evidenceSource</code>, <code className="inline-code">notes</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Enhancement action</h4>
+        <p className="lede subtle">
+          FK: <code className="inline-code">relatedGapId</code>, <code className="inline-code">relatedOutcomeId</code>, <code className="inline-code">lobId</code>. Evidence:{" "}
+          <code className="inline-code">evidenceAttachment</code> (URL/text) or{" "}
+          <code className="inline-code">evidenceAttachmentS3Key</code> (private object key;
+          UI may use <code className="inline-code">s3key:</code> prefix in forms).
+        </p>
+        <table className="blueprint-table blueprint-table-compact">
+          <thead>
+            <tr>
+              <th>Field group</th>
+              <th>Members</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Identity</td>
+              <td><code className="inline-code">actionId</code>, LOB keys</td>
+            </tr>
+            <tr>
+              <td>Request</td>
+              <td><code className="inline-code">requestType</code>, <code className="inline-code">requestTitle</code>, <code className="inline-code">description</code></td>
+            </tr>
+            <tr>
+              <td>Prioritization</td>
+              <td><code className="inline-code">businessDriver</code>, <code className="inline-code">impactArea</code>, <code className="inline-code">priority</code>, <code className="inline-code">urgency</code>, <code className="inline-code">effortEstimate</code>, <code className="inline-code">dependency</code></td>
+            </tr>
+            <tr>
+              <td>Workflow</td>
+              <td><code className="inline-code">decisionNeeded</code>, <code className="inline-code">owner</code>, <code className="inline-code">status</code>, <code className="inline-code">targetDate</code>, <code className="inline-code">advisoryNotes</code>, evidence fields</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Risk / decision</h4>
+        <p className="lede subtle">
+          FK: <code className="inline-code">relatedActionId</code>, <code className="inline-code">lobId</code>.
+        </p>
+        <table className="blueprint-table blueprint-table-compact">
+          <thead>
+            <tr>
+              <th>Field group</th>
+              <th>Members</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Identity</td>
+              <td><code className="inline-code">riskDecisionId</code>, LOB keys, <code className="inline-code">type</code></td>
+            </tr>
+            <tr>
+              <td>Risk body</td>
+              <td><code className="inline-code">description</code>, <code className="inline-code">impact</code>, <code className="inline-code">probability</code>, <code className="inline-code">severity</code></td>
+            </tr>
+            <tr>
+              <td>Decisioning</td>
+              <td><code className="inline-code">mitigationDecisionRequired</code>, <code className="inline-code">decisionOwner</code>, <code className="inline-code">dueDate</code>, <code className="inline-code">status</code>, <code className="inline-code">escalationRequired</code>, <code className="inline-code">notes</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Training &amp; adoption</h4>
+        <p className="lede subtle">
+          FK: <code className="inline-code">relatedOutcomeId</code>, <code className="inline-code">lobId</code>; soft link by <code className="inline-code">capabilityArea</code>.
+        </p>
+        <table className="blueprint-table blueprint-table-compact">
+          <thead>
+            <tr>
+              <th>Field group</th>
+              <th>Members</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Identity</td>
+              <td><code className="inline-code">trainingId</code>, LOB keys</td>
+            </tr>
+            <tr>
+              <td>Need</td>
+              <td><code className="inline-code">capabilityArea</code>, <code className="inline-code">audience</code>, <code className="inline-code">trainingAdoptionNeed</code>, <code className="inline-code">currentState</code></td>
+            </tr>
+            <tr>
+              <td>Plan</td>
+              <td><code className="inline-code">recommendedEnablement</code>, <code className="inline-code">referenceMaterialNeeded</code>, <code className="inline-code">deliveryMethod</code></td>
+            </tr>
+            <tr>
+              <td>Workflow</td>
+              <td><code className="inline-code">priority</code>, <code className="inline-code">owner</code>, <code className="inline-code">status</code>, <code className="inline-code">targetDate</code>, <code className="inline-code">completionAdoptionMeasure</code>, <code className="inline-code">notes</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>KPI measurement</h4>
+        <p className="lede subtle">
+          FK: <code className="inline-code">relatedOutcomeId</code>, <code className="inline-code">lobId</code>.
+        </p>
+        <table className="blueprint-table blueprint-table-compact">
+          <thead>
+            <tr>
+              <th>Field group</th>
+              <th>Members</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Identity</td>
+              <td><code className="inline-code">kpiId</code>, LOB keys</td>
+            </tr>
+            <tr>
+              <td>Definition</td>
+              <td><code className="inline-code">kpiSuccessMeasure</code>, <code className="inline-code">definition</code></td>
+            </tr>
+            <tr>
+              <td>Values</td>
+              <td><code className="inline-code">baselineValue</code>, <code className="inline-code">targetValue</code>, <code className="inline-code">currentValue</code>, <code className="inline-code">trend</code></td>
+            </tr>
+            <tr>
+              <td>Operating model</td>
+              <td><code className="inline-code">measurementSource</code>, <code className="inline-code">reportingFrequency</code>, <code className="inline-code">dataOwner</code>, <code className="inline-code">confidenceLevel</code>, <code className="inline-code">lastUpdated</code>, <code className="inline-code">notes</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Meeting governance log</h4>
+        <p className="lede subtle">
+          FK: <code className="inline-code">relatedActionId</code>,{" "}
+          <code className="inline-code">relatedRiskDecisionId</code>, <code className="inline-code">lobId</code>.
+        </p>
+        <table className="blueprint-table blueprint-table-compact">
+          <thead>
+            <tr>
+              <th>Field group</th>
+              <th>Members</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Identity</td>
+              <td><code className="inline-code">meetingId</code>, <code className="inline-code">meetingDate</code>, <code className="inline-code">meetingType</code>, LOB keys</td>
+            </tr>
+            <tr>
+              <td>Content</td>
+              <td><code className="inline-code">topic</code>, <code className="inline-code">summary</code>, <code className="inline-code">decisionAction</code></td>
+            </tr>
+            <tr>
+              <td>Follow-up</td>
+              <td><code className="inline-code">owner</code>, <code className="inline-code">dueDate</code>, related ids, <code className="inline-code">status</code>, <code className="inline-code">nextReviewDate</code>, <code className="inline-code">notes</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Document artifact</h4>
+        <p className="lede subtle">
+          FK: <code className="inline-code">relatedOutcomeId</code>, <code className="inline-code">relatedActionId</code>, <code className="inline-code">lobId</code>. Location:{" "}
+          <code className="inline-code">locationLink</code> or <code className="inline-code">artifactS3Key</code> (forms may use <code className="inline-code">s3key:</code> prefix).
+        </p>
+        <table className="blueprint-table blueprint-table-compact">
+          <thead>
+            <tr>
+              <th>Field group</th>
+              <th>Members</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Identity</td>
+              <td><code className="inline-code">artifactId</code>, LOB keys, <code className="inline-code">artifactType</code>, <code className="inline-code">artifactName</code></td>
+            </tr>
+            <tr>
+              <td>Metadata</td>
+              <td><code className="inline-code">description</code>, <code className="inline-code">owner</code>, <code className="inline-code">version</code>, <code className="inline-code">status</code>, <code className="inline-code">lastUpdated</code>, <code className="inline-code">notes</code></td>
+            </tr>
+            <tr>
+              <td>Storage</td>
+              <td><code className="inline-code">locationLink</code>, optional <code className="inline-code">artifactS3Key</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Reference rows (seed only today)</h4>
+        <p className="lede subtle">
+          <code className="inline-code">lookups</code>, <code className="inline-code">relationshipMap</code>, and{" "}
+          <code className="inline-code">fieldDictionary</code> arrays in the bundle mirror
+          workbook sheets; Phase 2 can move them to dedicated items or a side table with
+          read-only APIs.
+        </p>
       </section>
 
       <section id="traceability-lookups" className="blueprint-section">

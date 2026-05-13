@@ -1,24 +1,55 @@
-:root {
-  font-family: system-ui, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
-  margin: 0;
-  min-height: 100vh;
-}
-
-@media (prefers-color-scheme: light) {
+/* AWS console–inspired dark theme (Ember-like neutrals + orange primary) */
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --background: 220 14% 96%;
+    --foreground: 220 15% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 12%;
+    --primary: 32 100% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 12% 92%;
+    --secondary-foreground: 220 15% 18%;
+    --muted: 220 10% 90%;
+    --muted-foreground: 220 8% 40%;
+    --accent: 210 40% 94%;
+    --accent-foreground: 215 25% 18%;
+    --destructive: 0 72% 48%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 10% 82%;
+    --input: 220 10% 82%;
+    --ring: 32 100% 48%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 220 16% 8%;
+    --foreground: 210 20% 96%;
+    --card: 220 14% 11%;
+    --card-foreground: 210 20% 96%;
+    --primary: 32 100% 50%;
+    --primary-foreground: 220 16% 8%;
+    --secondary: 220 12% 16%;
+    --secondary-foreground: 210 15% 92%;
+    --muted: 220 10% 18%;
+    --muted-foreground: 215 12% 68%;
+    --accent: 215 45% 18%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 10% 20%;
+    --input: 220 10% 18%;
+    --ring: 32 100% 50%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased min-h-screen;
   }
 }

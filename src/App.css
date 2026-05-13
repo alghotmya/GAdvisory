@@ -507,6 +507,15 @@
   white-space: nowrap;
 }
 
+.blueprint-table-compact {
+  font-size: 0.8rem;
+}
+
+.blueprint-table-compact th,
+.blueprint-table-compact td {
+  padding: 0.35rem 0.45rem;
+}
+
 .blueprint-list {
   margin: 0.5rem 0 0;
   padding-left: 1.15rem;

@@ -1,4 +1,4 @@
-import { controlTowerStore } from "../controlTower/store";
+import { useControlTower } from "../controlTower/ControlTowerContext";
 import {
   CONTROL_TOWER_ATTR,
   CONTROL_TOWER_GSI,
@@ -6,7 +6,8 @@ import {
 } from "../controlTower/dynamoSingleTableDesign";
 
 export function DashboardPage() {
-  const d = controlTowerStore.getDashboard();
+  const { getDashboard } = useControlTower();
+  const d = getDashboard();
 
   return (
     <section className="panel panel-wide">

@@ -1,11 +1,68 @@
 import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { DataTable } from "../components/DataTable";
-import { controlTowerStore } from "../controlTower/store";
+import { Pencil } from "lucide-react";
+import { useControlTower } from "../controlTower/ControlTowerContext";
 import {
   ATTACHMENTS_BUCKET_PLACEHOLDER,
   placeholderPresignedDownloadUrl,
 } from "../controlTower/s3Attachment";
+import {
+  ACT_FORM_FIELDS,
+  ACT_TABLE_COLS,
+  ART_FORM_FIELDS,
+  ART_TABLE_COLS,
+  blankAction,
+  blankArtifact,
+  blankGap,
+  blankKpi,
+  blankMeeting,
+  blankOutcome,
+  blankRequirement,
+  blankRisk,
+  blankTraining,
+  GAP_FORM_FIELDS,
+  GAP_TABLE_COLS,
+  KPI_FORM_FIELDS,
+  KPI_TABLE_COLS,
+  LOB_FORM_FIELDS,
+  lobProfileToDraft,
+  MTG_FORM_FIELDS,
+  MTG_TABLE_COLS,
+  OUTCOME_FORM_FIELDS,
+  OUTCOME_TABLE_COLS,
+  parseAction,
+  parseArtifact,
+  parseGap,
+  parseKpi,
+  parseLobProfile,
+  parseMeeting,
+  parseOutcome,
+  parseRequirement,
+  parseRisk,
+  parseTraining,
+  REQ_FORM_FIELDS,
+  REQ_TABLE_COLS,
+  RISK_FORM_FIELDS,
+  RISK_TABLE_COLS,
+  TRN_FORM_FIELDS,
+  TRN_TABLE_COLS,
+} from "../controlTower/lobEntityForms";
+import type { DocumentArtifact, EnhancementAction } from "../controlTower/types";
+import { RecordCrudPanel } from "../components/crud/RecordCrudPanel";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 type TabId =
   | "profile"
@@ -19,285 +76,385 @@ type TabId =
   | "meetings"
   | "artifacts";
 
-const TABS: { id: TabId; label: string }[] = [
-  { id: "profile", label: "Profile" },
-  { id: "outcomes", label: "Outcomes" },
-  { id: "requirements", label: "Capabilities" },
-  { id: "gaps", label: "Gap findings" },
-  { id: "actions", label: "Action backlog" },
-  { id: "risks", label: "Risks / decisions" },
-  { id: "training", label: "Training" },
-  { id: "kpis", label: "KPIs" },
-  { id: "meetings", label: "Meetings" },
-  { id: "artifacts", label: "Artifacts" },
-];
-
-function healthPillClass(health: string): string {
+function healthBadgeVariant(health: string): "default" | "secondary" | "destructive" | "outline" {
   const h = health.toLowerCase();
-  if (h === "green") return "health-pill health-green";
-  if (h === "amber") return "health-pill health-amber";
-  if (h === "red") return "health-pill health-red";
-  if (h === "grey" || h === "gray") return "health-pill health-grey";
-  return "health-pill health-grey";
+  if (h === "green") return "default";
+  if (h === "amber") return "secondary";
+  if (h === "red") return "destructive";
+  return "outline";
+}
+
+function actionRowForCrud(a: EnhancementAction): Record<string, unknown> {
+  return {
+    ...a,
+    evidenceAttachment: a.evidenceAttachmentS3Key
+      ? `s3key:${a.evidenceAttachmentS3Key}`
+      : a.evidenceAttachment,
+  };
+}
+
+function artifactRowForCrud(a: DocumentArtifact): Record<string, unknown> {
+  return {
+    ...a,
+    locationLink: a.artifactS3Key ? `s3key:${a.artifactS3Key}` : a.locationLink,
+  };
 }
 
 export function LobDetailPage() {
   const { id } = useParams();
   const [tab, setTab] = useState<TabId>("profile");
-  const ws = useMemo(() => (id ? controlTowerStore.getLobWorkspace(id) : null), [id]);
+  const [profileOpen, setProfileOpen] = useState(false);
+  const [profileDraft, setProfileDraft] = useState<Record<string, string>>({});
+
+  const {
+    bundle,
+    getLobWorkspace,
+    keyForProfile,
+    upsertLob,
+    upsertOutcome,
+    deleteOutcome,
+    upsertRequirement,
+    deleteRequirement,
+    upsertGap,
+    deleteGap,
+    upsertAction,
+    deleteAction,
+    upsertRisk,
+    deleteRisk,
+    upsertTraining,
+    deleteTraining,
+    upsertKpi,
+    deleteKpi,
+    upsertMeeting,
+    deleteMeeting,
+    upsertArtifact,
+    deleteArtifact,
+    nextOutcomeId,
+    nextRequirementId,
+    nextGapId,
+    nextActionId,
+    nextRiskId,
+    nextTrainingId,
+    nextKpiId,
+    nextMeetingId,
+    nextArtifactId,
+  } = useControlTower();
+
+  const ws = useMemo(() => (id ? getLobWorkspace(id) : null), [id, bundle, getLobWorkspace]);
 
   if (!id || !ws?.profile) {
     return (
-      <section className="panel">
+      <div className="mx-auto max-w-2xl space-y-4 p-6">
         <p>
-          <Link to="/lobs">← All LOBs</Link>
+          <Link to="/lobs" className="text-sm text-primary hover:underline">
+            ← All LOBs
+          </Link>
         </p>
-        <h2>LOB not found</h2>
-        <p className="lede">
-          No LOB profile matches this id. Open{" "}
-          <Link to="/lobs">LOB 360</Link> and pick a row from the workbook-backed list.
+        <h2 className="text-xl font-semibold">LOB not found</h2>
+        <p className="text-sm text-muted-foreground">
+          No LOB profile matches this id. Open <Link to="/lobs" className="text-primary underline">LOB 360</Link> and
+          pick a row from the list.
         </p>
-      </section>
+      </div>
     );
   }
 
   const { profile } = ws;
-  const keys = controlTowerStore.keyForProfile(profile.lobId);
+  const keys = keyForProfile(profile.lobId);
+
+  function openProfileEdit() {
+    setProfileDraft(lobProfileToDraft(profile));
+    setProfileOpen(true);
+  }
+
+  function saveProfile() {
+    upsertLob(parseLobProfile(profileDraft));
+    setProfileOpen(false);
+  }
 
   return (
-    <section className="panel panel-wide">
+    <div className="mx-auto max-w-5xl space-y-4 p-4 md:p-6">
       <p>
-        <Link to="/lobs">← All LOBs</Link>
-      </p>
-      <div className="lob-detail-head">
-        <h2>{profile.lobName}</h2>
-        <span className={healthPillClass(profile.health)}>{profile.health}</span>
-      </div>
-      <p className="lede subtle">
-        {profile.lobId} · {profile.ministryCluster} · {profile.currentEpStatus}
+        <Link to="/lobs" className="text-sm text-primary hover:underline">
+          ← All LOBs
+        </Link>
       </p>
 
-      <div className="tabs" role="tablist">
-        {TABS.map((t) => (
-          <button
-            key={t.id}
-            type="button"
-            role="tab"
-            className={`tab${tab === t.id ? " tab-active" : ""}`}
-            onClick={() => setTab(t.id)}
-          >
-            {t.label}
-          </button>
-        ))}
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight">{profile.lobName}</h1>
+          <p className="mt-1 font-mono text-xs text-muted-foreground">
+            {profile.lobId} · {profile.ministryCluster} · {profile.currentEpStatus}
+          </p>
+        </div>
+        <Badge variant={healthBadgeVariant(profile.health)}>{profile.health}</Badge>
       </div>
 
-      {tab === "profile" && (
-        <>
-          <dl className="detail-grid">
-            <dt>Business owner</dt>
-            <dd>{profile.businessOwner}</dd>
-            <dt>Technical owner</dt>
-            <dd>{profile.technicalOwner}</dd>
-            <dt>Bell advisor / CSM</dt>
-            <dd>{profile.bellAdvisorCsm}</dd>
-            <dt>Implementation partner</dt>
-            <dd>{profile.implementationPartner}</dd>
-            <dt>Support model</dt>
-            <dd>{profile.supportModel}</dd>
-            <dt>Capabilities enabled</dt>
-            <dd>{profile.capabilitiesEnabled}</dd>
-            <dt>Maturity</dt>
-            <dd>{profile.maturityLevel}</dd>
-            <dt>Last review</dt>
-            <dd>{profile.lastReviewDate || "—"}</dd>
-            <dt>Next review</dt>
-            <dd>{profile.nextReviewDate || "—"}</dd>
-            <dt>Notes</dt>
-            <dd>{profile.notes}</dd>
+      <Tabs value={tab} onValueChange={(v) => setTab(v as TabId)} className="w-full">
+        <TabsList className="flex h-auto min-h-9 w-full flex-wrap justify-start gap-1 bg-muted/60 p-1">
+          <TabsTrigger value="profile">Profile</TabsTrigger>
+          <TabsTrigger value="outcomes">Outcomes</TabsTrigger>
+          <TabsTrigger value="requirements">Capabilities</TabsTrigger>
+          <TabsTrigger value="gaps">Gaps</TabsTrigger>
+          <TabsTrigger value="actions">Actions</TabsTrigger>
+          <TabsTrigger value="risks">Risks</TabsTrigger>
+          <TabsTrigger value="training">Training</TabsTrigger>
+          <TabsTrigger value="kpis">KPIs</TabsTrigger>
+          <TabsTrigger value="meetings">Meetings</TabsTrigger>
+          <TabsTrigger value="artifacts">Artifacts</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="profile" className="space-y-4">
+          <div className="flex justify-end">
+            <Button type="button" size="sm" variant="secondary" onClick={openProfileEdit}>
+              <Pencil className="mr-1 h-4 w-4" />
+              Edit profile
+            </Button>
+          </div>
+          <dl className="grid gap-3 rounded-lg border border-border bg-card/40 p-4 text-sm sm:grid-cols-2">
+            <div>
+              <dt className="text-muted-foreground">Business owner</dt>
+              <dd className="font-medium">{profile.businessOwner}</dd>
+            </div>
+            <div>
+              <dt className="text-muted-foreground">Technical owner</dt>
+              <dd className="font-medium">{profile.technicalOwner}</dd>
+            </div>
+            <div>
+              <dt className="text-muted-foreground">Bell advisor / CSM</dt>
+              <dd className="font-medium">{profile.bellAdvisorCsm}</dd>
+            </div>
+            <div>
+              <dt className="text-muted-foreground">Implementation partner</dt>
+              <dd className="font-medium">{profile.implementationPartner}</dd>
+            </div>
+            <div>
+              <dt className="text-muted-foreground">Support model</dt>
+              <dd className="font-medium">{profile.supportModel}</dd>
+            </div>
+            <div>
+              <dt className="text-muted-foreground">Capabilities enabled</dt>
+              <dd className="font-medium">{profile.capabilitiesEnabled}</dd>
+            </div>
+            <div>
+              <dt className="text-muted-foreground">Maturity</dt>
+              <dd className="font-medium">{profile.maturityLevel}</dd>
+            </div>
+            <div>
+              <dt className="text-muted-foreground">Last / next review</dt>
+              <dd className="font-medium">
+                {profile.lastReviewDate || "—"} / {profile.nextReviewDate || "—"}
+              </dd>
+            </div>
+            <div className="sm:col-span-2">
+              <dt className="text-muted-foreground">Notes</dt>
+              <dd className="mt-1 whitespace-pre-wrap">{profile.notes}</dd>
+            </div>
           </dl>
-          <details className="design-callout">
-            <summary>DynamoDB keys (this LOB profile row)</summary>
-            <dl className="detail-grid">
-              <dt>pk</dt>
-              <dd>
-                <code className="inline-code">{keys.pk}</code>
-              </dd>
-              <dt>sk</dt>
-              <dd>
-                <code className="inline-code">{keys.sk}</code>
-              </dd>
-              <dt>gsi1pk</dt>
-              <dd>
-                <code className="inline-code">{keys.gsi1pk}</code>
-              </dd>
-              <dt>gsi1sk</dt>
-              <dd>
-                <code className="inline-code">{keys.gsi1sk}</code>
-              </dd>
+          <details className="rounded-md border border-border/80 bg-muted/20 p-3 text-sm">
+            <summary className="cursor-pointer font-medium">DynamoDB keys (this LOB profile row)</summary>
+            <dl className="mt-3 grid gap-2 font-mono text-xs sm:grid-cols-2">
+              <div>
+                <dt className="text-muted-foreground">pk</dt>
+                <dd>{keys.pk}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground">sk</dt>
+                <dd>{keys.sk}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground">gsi1pk</dt>
+                <dd>{keys.gsi1pk}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground">gsi1sk</dt>
+                <dd>{keys.gsi1sk}</dd>
+              </div>
             </dl>
           </details>
-        </>
-      )}
+        </TabsContent>
 
-      {tab === "outcomes" && (
-        <DataTable
-          columns={[
-            { key: "outcomeId", label: "Outcome ID" },
-            { key: "businessOutcome", label: "Business outcome" },
-            { key: "advisoryPriority", label: "Priority" },
-            { key: "health", label: "Health" },
-            { key: "status", label: "Status" },
-            { key: "targetReviewDate", label: "Target review" },
-          ]}
-          rows={ws.outcomes as unknown as Record<string, unknown>[]}
-        />
-      )}
+        <TabsContent value="outcomes">
+          <RecordCrudPanel
+            title="Outcomes"
+            rows={ws.outcomes as unknown as Record<string, unknown>[]}
+            idField="outcomeId"
+            tableColumns={[...OUTCOME_TABLE_COLS]}
+            formFields={[...OUTCOME_FORM_FIELDS]}
+            blankRow={() => blankOutcome(profile, nextOutcomeId)}
+            onSave={(row) => upsertOutcome(parseOutcome(row))}
+            onDelete={deleteOutcome}
+          />
+        </TabsContent>
 
-      {tab === "requirements" && (
-        <DataTable
-          columns={[
-            { key: "requirementId", label: "Req ID" },
-            { key: "relatedOutcomeId", label: "Outcome" },
-            { key: "capabilityArea", label: "Capability" },
-            { key: "specificRequirement", label: "Requirement" },
-            { key: "gapType", label: "Gap type" },
-            { key: "status", label: "Status" },
-            { key: "targetDate", label: "Target" },
-          ]}
-          rows={ws.requirements as unknown as Record<string, unknown>[]}
-        />
-      )}
+        <TabsContent value="requirements">
+          <RecordCrudPanel
+            title="Capability requirements"
+            rows={ws.requirements as unknown as Record<string, unknown>[]}
+            idField="requirementId"
+            tableColumns={[...REQ_TABLE_COLS]}
+            formFields={[...REQ_FORM_FIELDS]}
+            blankRow={() => blankRequirement(profile, nextRequirementId)}
+            onSave={(row) => upsertRequirement(parseRequirement(row))}
+            onDelete={deleteRequirement}
+          />
+        </TabsContent>
 
-      {tab === "gaps" && (
-        <DataTable
-          columns={[
-            { key: "findingId", label: "Finding ID" },
-            { key: "relatedOutcomeId", label: "Outcome" },
-            { key: "relatedRequirementId", label: "Requirement" },
-            { key: "findingObservation", label: "Observation" },
-            { key: "priority", label: "Priority" },
-            { key: "health", label: "Health" },
-            { key: "status", label: "Status" },
-          ]}
-          rows={ws.gapFindings as unknown as Record<string, unknown>[]}
-        />
-      )}
+        <TabsContent value="gaps">
+          <RecordCrudPanel
+            title="Gap findings"
+            rows={ws.gapFindings as unknown as Record<string, unknown>[]}
+            idField="findingId"
+            tableColumns={[...GAP_TABLE_COLS]}
+            formFields={[...GAP_FORM_FIELDS]}
+            blankRow={() => blankGap(profile, nextGapId)}
+            onSave={(row) => upsertGap(parseGap(row))}
+            onDelete={deleteGap}
+          />
+        </TabsContent>
 
-      {tab === "actions" && (
-        <>
-          <p className="lede subtle">
-            Evidence files: store private objects in S3 and persist the object key on the
-            item (prefix <code className="inline-code">s3key:</code> in seed converts to{" "}
-            <code className="inline-code">evidenceAttachmentS3Key</code>). Presigned URLs
-            come from your API.
+        <TabsContent value="actions" className="space-y-3">
+          <p className="text-sm text-muted-foreground">
+            Evidence: use a URL in <strong>evidence attachment</strong>, or prefix with{" "}
+            <code className="rounded bg-muted px-1">s3key:</code> plus the object key for private S3
+            (presigned URLs from your API in production).
           </p>
-          <DataTable
-            columns={[
-              { key: "actionId", label: "Action ID" },
-              { key: "requestTitle", label: "Title" },
-              { key: "requestType", label: "Type" },
-              { key: "priority", label: "Priority" },
-              { key: "status", label: "Status" },
-              { key: "targetDate", label: "Target" },
-              { key: "relatedGapId", label: "Gap" },
-              { key: "evidenceAttachment", label: "Evidence / link" },
-            ]}
-            rows={ws.actions.map((a) => ({
-              ...a,
-              evidenceAttachment:
-                a.evidenceAttachmentS3Key !== undefined
-                  ? `[S3] ${a.evidenceAttachmentS3Key}`
-                  : a.evidenceAttachment,
-            })) as unknown as Record<string, unknown>[]}
+          <RecordCrudPanel
+            title="Enhancement actions"
+            rows={ws.actions.map((a) => actionRowForCrud(a))}
+            idField="actionId"
+            tableColumns={[...ACT_TABLE_COLS]}
+            formFields={[...ACT_FORM_FIELDS]}
+            blankRow={() => blankAction(profile, nextActionId)}
+            onSave={(row) => upsertAction(parseAction(row))}
+            onDelete={deleteAction}
           />
           {ws.actions.some((a) => a.evidenceAttachmentS3Key) && (
-            <p className="s3-hint">
-              Example download URL pattern:{" "}
+            <p className="text-xs text-muted-foreground">
+              Example presigned GET pattern:{" "}
               {placeholderPresignedDownloadUrl(
                 ATTACHMENTS_BUCKET_PLACEHOLDER,
                 "control-tower/default/lob/LOB-001/actions/ACT-001/file.pdf",
               )}
             </p>
           )}
-        </>
-      )}
+        </TabsContent>
 
-      {tab === "risks" && (
-        <DataTable
-          columns={[
-            { key: "riskDecisionId", label: "ID" },
-            { key: "type", label: "Type" },
-            { key: "description", label: "Description" },
-            { key: "severity", label: "Severity" },
-            { key: "status", label: "Status" },
-            { key: "dueDate", label: "Due" },
-            { key: "relatedActionId", label: "Action" },
-          ]}
-          rows={ws.risksDecisions as unknown as Record<string, unknown>[]}
-        />
-      )}
+        <TabsContent value="risks">
+          <RecordCrudPanel
+            title="Risks / decisions"
+            rows={ws.risksDecisions as unknown as Record<string, unknown>[]}
+            idField="riskDecisionId"
+            tableColumns={[...RISK_TABLE_COLS]}
+            formFields={[...RISK_FORM_FIELDS]}
+            blankRow={() => blankRisk(profile, nextRiskId)}
+            onSave={(row) => upsertRisk(parseRisk(row))}
+            onDelete={deleteRisk}
+          />
+        </TabsContent>
 
-      {tab === "training" && (
-        <DataTable
-          columns={[
-            { key: "trainingId", label: "Training ID" },
-            { key: "capabilityArea", label: "Capability" },
-            { key: "audience", label: "Audience" },
-            { key: "trainingAdoptionNeed", label: "Need" },
-            { key: "priority", label: "Priority" },
-            { key: "status", label: "Status" },
-            { key: "targetDate", label: "Target" },
-          ]}
-          rows={ws.training as unknown as Record<string, unknown>[]}
-        />
-      )}
+        <TabsContent value="training">
+          <RecordCrudPanel
+            title="Training & adoption"
+            rows={ws.training as unknown as Record<string, unknown>[]}
+            idField="trainingId"
+            tableColumns={[...TRN_TABLE_COLS]}
+            formFields={[...TRN_FORM_FIELDS]}
+            blankRow={() => blankTraining(profile, nextTrainingId)}
+            onSave={(row) => upsertTraining(parseTraining(row))}
+            onDelete={deleteTraining}
+          />
+        </TabsContent>
 
-      {tab === "kpis" && (
-        <DataTable
-          columns={[
-            { key: "kpiId", label: "KPI ID" },
-            { key: "kpiSuccessMeasure", label: "Measure" },
-            { key: "baselineValue", label: "Baseline" },
-            { key: "targetValue", label: "Target" },
-            { key: "currentValue", label: "Current" },
-            { key: "reportingFrequency", label: "Frequency" },
-            { key: "lastUpdated", label: "Updated" },
-          ]}
-          rows={ws.kpis as unknown as Record<string, unknown>[]}
-        />
-      )}
+        <TabsContent value="kpis">
+          <RecordCrudPanel
+            title="KPI measurements"
+            rows={ws.kpis as unknown as Record<string, unknown>[]}
+            idField="kpiId"
+            tableColumns={[...KPI_TABLE_COLS]}
+            formFields={[...KPI_FORM_FIELDS]}
+            blankRow={() => blankKpi(profile, nextKpiId)}
+            onSave={(row) => upsertKpi(parseKpi(row))}
+            onDelete={deleteKpi}
+          />
+        </TabsContent>
 
-      {tab === "meetings" && (
-        <DataTable
-          columns={[
-            { key: "meetingId", label: "Meeting ID" },
-            { key: "meetingDate", label: "Date" },
-            { key: "meetingType", label: "Type" },
-            { key: "topic", label: "Topic" },
-            { key: "status", label: "Status" },
-            { key: "relatedActionId", label: "Action" },
-          ]}
-          rows={ws.meetings as unknown as Record<string, unknown>[]}
-        />
-      )}
+        <TabsContent value="meetings">
+          <RecordCrudPanel
+            title="Meeting governance log"
+            rows={ws.meetings as unknown as Record<string, unknown>[]}
+            idField="meetingId"
+            tableColumns={[...MTG_TABLE_COLS]}
+            formFields={[...MTG_FORM_FIELDS]}
+            blankRow={() => blankMeeting(profile, nextMeetingId)}
+            onSave={(row) => upsertMeeting(parseMeeting(row))}
+            onDelete={deleteMeeting}
+          />
+        </TabsContent>
 
-      {tab === "artifacts" && (
-        <DataTable
-          columns={[
-            { key: "artifactId", label: "Artifact ID" },
-            { key: "artifactType", label: "Type" },
-            { key: "artifactName", label: "Name" },
-            { key: "locationLink", label: "Location / link" },
-            { key: "version", label: "Ver" },
-            { key: "status", label: "Status" },
-          ]}
-          rows={ws.artifacts.map((a) => ({
-            ...a,
-            locationLink:
-              a.artifactS3Key !== undefined ? `[S3] ${a.artifactS3Key}` : a.locationLink,
-          })) as unknown as Record<string, unknown>[]}
-        />
-      )}
-    </section>
+        <TabsContent value="artifacts" className="space-y-3">
+          <p className="text-sm text-muted-foreground">
+            Location: external URL, or <code className="rounded bg-muted px-1">s3key:</code> plus object key for
+            artifacts stored in S3.
+          </p>
+          <RecordCrudPanel
+            title="Document artifacts"
+            rows={ws.artifacts.map((a) => artifactRowForCrud(a))}
+            idField="artifactId"
+            tableColumns={[...ART_TABLE_COLS]}
+            formFields={[...ART_FORM_FIELDS]}
+            blankRow={() => blankArtifact(profile, nextArtifactId)}
+            onSave={(row) => upsertArtifact(parseArtifact(row))}
+            onDelete={deleteArtifact}
+          />
+        </TabsContent>
+      </Tabs>
+
+      <Dialog open={profileOpen} onOpenChange={setProfileOpen}>
+        <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Edit LOB profile</DialogTitle>
+            <DialogDescription>
+              Changing <code className="rounded bg-muted px-1">lobId</code> re-keys this LOB in local storage only;
+              keep IDs stable once tied to integrations.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-3 py-2">
+            {LOB_FORM_FIELDS.map((f) => (
+              <div key={f.key} className="grid gap-1.5">
+                <Label htmlFor={`prof-${f.key}`}>{f.label}</Label>
+                {f.multiline ? (
+                  <textarea
+                    id={`prof-${f.key}`}
+                    disabled={f.key === "lobId"}
+                    className={cn(
+                      "flex min-h-[72px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm",
+                      f.key === "lobId" && "opacity-70",
+                    )}
+                    value={profileDraft[f.key] ?? ""}
+                    onChange={(e) => setProfileDraft((d) => ({ ...d, [f.key]: e.target.value }))}
+                  />
+                ) : (
+                  <Input
+                    id={`prof-${f.key}`}
+                    disabled={f.key === "lobId"}
+                    value={profileDraft[f.key] ?? ""}
+                    onChange={(e) => setProfileDraft((d) => ({ ...d, [f.key]: e.target.value }))}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+          <DialogFooter>
+            <Button type="button" variant="outline" onClick={() => setProfileOpen(false)}>
+              Cancel
+            </Button>
+            <Button type="button" onClick={saveProfile}>
+              Save
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </div>
   );
 }

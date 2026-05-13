@@ -1,9 +1,10 @@
 import { useMemo, useState } from "react";
 import { DataTable } from "../components/DataTable";
-import { controlTowerStore } from "../controlTower/store";
+import { useControlTower } from "../controlTower/ControlTowerContext";
 
 export function FieldDictionaryPage() {
-  const rows = controlTowerStore.bundle.fieldDictionary;
+  const { bundle } = useControlTower();
+  const rows = bundle.fieldDictionary;
   const [q, setQ] = useState("");
   const filtered = useMemo(() => {
     if (!q.trim()) return rows;
