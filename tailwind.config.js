@@ -44,15 +44,23 @@ export default {
       },
       fontFamily: {
         sans: [
-          "Amazon Ember",
-          "Helvetica Neue",
-          "Helvetica",
-          "Arial",
+          '"IBM Plex Sans"',
           "ui-sans-serif",
           "system-ui",
+          "Segoe UI",
+          "Helvetica Neue",
+          "Arial",
           "sans-serif",
         ],
-        mono: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
+        mono: [
+          '"IBM Plex Mono"',
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "Monaco",
+          "Consolas",
+          "monospace",
+        ],
       },
       keyframes: {
         "accordion-down": {
