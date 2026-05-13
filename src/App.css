@@ -4,15 +4,24 @@
   flex-direction: column;
 }
 
+/* AWS console–style chrome: solid “Space” header, always high contrast (not tied to prefers-color-scheme). */
 .topbar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(0, 0, 0, 0.35);
+  padding: 0.75rem 1.5rem;
+  min-height: 3.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  color: #eaecf0;
+  background: #232f3e;
+  border-bottom: 1px solid #0f1419;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
 .brand-link {
@@ -23,32 +32,60 @@
   gap: 0.15rem;
 }
 
+.brand-link:hover .brand-title {
+  color: #ff9900;
+}
+
+.brand-link:focus-visible {
+  outline: 2px solid #ff9900;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
 .brand-title {
   font-size: 1.15rem;
   font-weight: 650;
   letter-spacing: 0.02em;
+  color: #f7f8fa;
 }
 
 .brand-sub {
   font-size: 0.78rem;
-  opacity: 0.75;
+  color: #aab7b8;
+  opacity: 1;
 }
 
 .nav {
   display: flex;
-  gap: 1rem;
-  font-size: 0.95rem;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.35rem;
+  font-size: 0.9rem;
 }
 
 .nav a {
-  color: inherit;
+  color: #d5dbdb;
   text-decoration: none;
-  opacity: 0.85;
+  opacity: 1;
+  padding: 0.4rem 0.65rem;
+  border-radius: 4px;
+  font-weight: 500;
 }
 
 .nav a:hover {
-  opacity: 1;
-  text-decoration: underline;
+  color: #ff9900;
+  background: rgba(255, 153, 0, 0.12);
+  text-decoration: none;
+}
+
+.nav a:focus-visible {
+  outline: 2px solid #ff9900;
+  outline-offset: 2px;
+}
+
+.nav a[aria-current="page"] {
+  color: #ff9900;
+  background: rgba(255, 153, 0, 0.16);
 }
 
 .content {
@@ -547,11 +584,6 @@
 }
 
 @media (prefers-color-scheme: light) {
-  .topbar {
-    border-bottom-color: rgba(0, 0, 0, 0.08);
-    background: rgba(255, 255, 255, 0.85);
-  }
-
   .module-list li,
   .lob-list a,
   .metric-card,

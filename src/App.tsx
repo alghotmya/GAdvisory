@@ -1,4 +1,4 @@
-import { BrowserRouter, Link, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Link, NavLink, Navigate, Route, Routes } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
 import { LobDetailPage } from "./pages/LobDetailPage";
 import { LobsPage } from "./pages/LobsPage";
@@ -18,13 +18,15 @@ function Shell() {
             <span className="brand-sub">GoO Advisory &amp; Outcomes Control Tower</span>
           </Link>
         </div>
-        <nav className="nav">
-          <Link to="/">Home</Link>
-          <Link to="/dashboard">Dashboard</Link>
-          <Link to="/lobs">LOB 360</Link>
-          <Link to="/field-dictionary">Fields</Link>
-          <Link to="/modules">Modules</Link>
-          <Link to="/system-design">Blueprint</Link>
+        <nav className="nav" aria-label="Primary">
+          <NavLink to="/" end>
+            Home
+          </NavLink>
+          <NavLink to="/dashboard">Dashboard</NavLink>
+          <NavLink to="/lobs">LOB 360</NavLink>
+          <NavLink to="/field-dictionary">Fields</NavLink>
+          <NavLink to="/modules">Modules</NavLink>
+          <NavLink to="/system-design">Blueprint</NavLink>
         </nav>
       </header>
       <main className="content">
