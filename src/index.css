@@ -2,27 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-/* AWS console–inspired dark theme (cool neutrals + orange primary) */
+/* AWS Management Console–inspired light theme (neutral chrome + Ember orange) */
 @layer base {
   :root {
-    --background: 220 14% 96%;
-    --foreground: 220 15% 12%;
+    --background: 210 11% 93%;
+    --foreground: 220 18% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 220 15% 12%;
-    --primary: 32 100% 48%;
+    --card-foreground: 220 18% 12%;
+    --primary: 28 86% 49%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 220 12% 92%;
-    --secondary-foreground: 220 15% 18%;
-    --muted: 220 10% 90%;
-    --muted-foreground: 220 8% 40%;
-    --accent: 210 40% 94%;
-    --accent-foreground: 215 25% 18%;
-    --destructive: 0 72% 48%;
+    --secondary: 210 10% 92%;
+    --secondary-foreground: 220 16% 18%;
+    --muted: 210 8% 90%;
+    --muted-foreground: 220 8% 38%;
+    --accent: 210 25% 95%;
+    --accent-foreground: 220 18% 16%;
+    --destructive: 0 72% 42%;
     --destructive-foreground: 0 0% 100%;
-    --border: 220 10% 82%;
-    --input: 220 10% 82%;
-    --ring: 32 100% 48%;
-    --radius: 0.625rem;
+    --border: 210 8% 82%;
+    --input: 210 8% 85%;
+    --ring: 28 86% 49%;
+    --radius: 0.5rem;
   }
 
   .dark {
@@ -60,7 +60,7 @@
   }
 
   ::selection {
-    background: hsl(32 100% 50% / 0.28);
+    background: hsl(28 86% 49% / 0.22);
     color: inherit;
   }
 }

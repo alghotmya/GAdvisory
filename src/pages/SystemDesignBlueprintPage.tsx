@@ -173,7 +173,7 @@ export function SystemDesignBlueprintPage() {
             </tr>
             <tr>
               <td>Styling</td>
-              <td>Tailwind + shadcn/ui primitives + App.css shell</td>
+              <td>Tailwind + shadcn/ui primitives + App.css shell (light AWS console chrome)</td>
               <td>Console-inspired neutrals, cards, dialogs, data tables.</td>
             </tr>
           </tbody>
