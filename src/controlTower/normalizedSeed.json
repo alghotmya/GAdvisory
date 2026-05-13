@@ -1,0 +1,2058 @@
+{
+  "Lookup Values": [
+    {
+      "Health": "Green",
+      "Priority": "Critical",
+      "Status": "New",
+      "Category": "Business Outcome",
+      "Capability Area": "IVR & Routing",
+      "Gap Type": "Capability Gap",
+      "Request Type": "CR",
+      "Complexity": "Low",
+      "Confidence": "High",
+      "Maturity Level": "Basic",
+      "Meeting Type": "Monthly Advisory Review",
+      "Dependency": "Client / LOB"
+    },
+    {
+      "Health": "Amber",
+      "Priority": "High",
+      "Status": "Triage",
+      "Category": "Requirement",
+      "Capability Area": "Voice",
+      "Gap Type": "Adoption Gap",
+      "Request Type": "Enhancement",
+      "Complexity": "Medium",
+      "Confidence": "Medium",
+      "Maturity Level": "Developing",
+      "Meeting Type": "Weekly Internal Review",
+      "Dependency": "DEEP"
+    },
+    {
+      "Health": "Red",
+      "Priority": "Medium",
+      "Status": "Under Analysis",
+      "Category": "Enhancement",
+      "Capability Area": "Digital / Online Channel",
+      "Gap Type": "Training Gap",
+      "Request Type": "Best Practice Recommendation",
+      "Complexity": "High",
+      "Confidence": "Low",
+      "Maturity Level": "Mature",
+      "Meeting Type": "Quarterly Strategic Review",
+      "Dependency": "GSIC"
+    },
+    {
+      "Health": "Grey",
+      "Priority": "Low",
+      "Status": "Recommended",
+      "Category": "Change Request",
+      "Capability Area": "Outbound",
+      "Gap Type": "Reporting Gap",
+      "Request Type": "Training Action",
+      "Complexity": "Unknown",
+      "Confidence": "Unknown",
+      "Maturity Level": "Optimized",
+      "Meeting Type": "Discovery",
+      "Dependency": "Bell"
+    },
+    {
+      "Health": "",
+      "Priority": "",
+      "Status": "Approved",
+      "Category": "Best Practice",
+      "Capability Area": "Reporting & Analytics",
+      "Gap Type": "Process Gap",
+      "Request Type": "Operational Action",
+      "Complexity": "",
+      "Confidence": "",
+      "Maturity Level": "Not Assessed",
+      "Meeting Type": "Decision Review",
+      "Dependency": "Connex"
+    },
+    {
+      "Health": "",
+      "Priority": "",
+      "Status": "In Delivery",
+      "Category": "Training Gap",
+      "Capability Area": "Training & Adoption",
+      "Gap Type": "Integration Gap",
+      "Request Type": "Risk Mitigation",
+      "Complexity": "",
+      "Confidence": "",
+      "Maturity Level": "",
+      "Meeting Type": "Training Review",
+      "Dependency": "AWS"
+    },
+    {
+      "Health": "",
+      "Priority": "",
+      "Status": "Blocked",
+      "Category": "Adoption Gap",
+      "Capability Area": "Operational Readiness",
+      "Gap Type": "Governance Gap",
+      "Request Type": "Decision",
+      "Complexity": "",
+      "Confidence": "",
+      "Maturity Level": "",
+      "Meeting Type": "",
+      "Dependency": "NICE"
+    },
+    {
+      "Health": "",
+      "Priority": "",
+      "Status": "On Hold",
+      "Category": "Reporting Gap",
+      "Capability Area": "Quality Management",
+      "Gap Type": "Data Gap",
+      "Request Type": "Investigation",
+      "Complexity": "",
+      "Confidence": "",
+      "Maturity Level": "",
+      "Meeting Type": "",
+      "Dependency": "ODP"
+    },
+    {
+      "Health": "",
+      "Priority": "",
+      "Status": "Completed",
+      "Category": "Process Gap",
+      "Capability Area": "Workforce Management",
+      "Gap Type": "Support Gap",
+      "Request Type": "Roadmap Candidate",
+      "Complexity": "",
+      "Confidence": "",
+      "Maturity Level": "",
+      "Meeting Type": "",
+      "Dependency": "Security / Privacy"
+    },
+    {
+      "Health": "",
+      "Priority": "",
+      "Status": "Closed",
+      "Category": "Platform Gap",
+      "Capability Area": "Knowledge Management",
+      "Gap Type": "No Gap / Opportunity",
+      "Request Type": "",
+      "Complexity": "",
+      "Confidence": "",
+      "Maturity Level": "",
+      "Meeting Type": "",
+      "Dependency": "Vendor"
+    },
+    {
+      "Health": "",
+      "Priority": "",
+      "Status": "Deferred",
+      "Category": "Risk",
+      "Capability Area": "Integration",
+      "Gap Type": "",
+      "Request Type": "",
+      "Complexity": "",
+      "Confidence": "",
+      "Maturity Level": "",
+      "Meeting Type": "",
+      "Dependency": "TBD"
+    },
+    {
+      "Health": "",
+      "Priority": "",
+      "Status": "",
+      "Category": "Decision",
+      "Capability Area": "Governance",
+      "Gap Type": "",
+      "Request Type": "",
+      "Complexity": "",
+      "Confidence": "",
+      "Maturity Level": "",
+      "Meeting Type": "",
+      "Dependency": ""
+    },
+    {
+      "Health": "",
+      "Priority": "",
+      "Status": "",
+      "Category": "Operational Issue",
+      "Capability Area": "Security / Privacy / Accessibility",
+      "Gap Type": "",
+      "Request Type": "",
+      "Complexity": "",
+      "Confidence": "",
+      "Maturity Level": "",
+      "Meeting Type": "",
+      "Dependency": ""
+    },
+    {
+      "Health": "",
+      "Priority": "",
+      "Status": "",
+      "Category": "",
+      "Capability Area": "Support Model",
+      "Gap Type": "",
+      "Request Type": "",
+      "Complexity": "",
+      "Confidence": "",
+      "Maturity Level": "",
+      "Meeting Type": "",
+      "Dependency": ""
+    }
+  ],
+  "LOB Profile": [
+    {
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Ministry / Cluster": "MAG",
+      "Business Owner": "TBD",
+      "Technical Owner": "TBD",
+      "Bell Advisor / CSM": "Tamani",
+      "Implementation Partner": "Connex / AWS",
+      "Support Model": "DEEP / GSIC / Bell Day2",
+      "Current EP Status": "Discovery / Advisory",
+      "Capabilities Enabled": "Voice, IVR, Reporting",
+      "Maturity Level": "Developing",
+      "Health": "Amber",
+      "Last Review Date": "2026-05-01",
+      "Next Review Date": "2026-05-30",
+      "Notes": "Annual Jury Questionnaire and online channel support under discussion"
+    },
+    {
+      "LOB ID": "LOB-002",
+      "LOB Name": "Example LOB - Reporting Focus",
+      "Ministry / Cluster": "TBD",
+      "Business Owner": "TBD",
+      "Technical Owner": "TBD",
+      "Bell Advisor / CSM": "Tamani",
+      "Implementation Partner": "TBD",
+      "Support Model": "TBD",
+      "Current EP Status": "Live",
+      "Capabilities Enabled": "Voice, Reporting",
+      "Maturity Level": "Basic",
+      "Health": "Grey",
+      "Last Review Date": "",
+      "Next Review Date": "",
+      "Notes": "Placeholder row - replace with real LOB"
+    }
+  ],
+  "Outcomes": [
+    {
+      "Outcome ID": "OUT-001",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Business Outcome": "Improve annual jury questionnaire support",
+      "Current Pain Point": "Citizens may need phone support when completing online questionnaire",
+      "Desired Future State": "Connected support across web, IVR, and agent experience",
+      "Success Metric / KPI": "Reduced questionnaire-related calls / transfers",
+      "Baseline Value": "TBD",
+      "Target Value": "TBD",
+      "Measurement Source": "ODP / Amazon Connect / web analytics",
+      "Confidence Level": "Medium",
+      "Advisory Priority": "High",
+      "Health": "Amber",
+      "Executive Narrative": "Reduce friction for citizens completing jury questionnaire support journey",
+      "Owner": "MAG-PJC / DEEP",
+      "Status": "Under Analysis",
+      "Target Review Date": "2026-05-30",
+      "Notes": "Define measurable baseline and target"
+    },
+    {
+      "Outcome ID": "OUT-002",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Business Outcome": "Improve outbound communication readiness",
+      "Current Pain Point": "Manual outreach may limit speed and consistency",
+      "Desired Future State": "Governed outbound campaign / messaging capability where approved",
+      "Success Metric / KPI": "Campaign completion, contact rate, opt-out rate",
+      "Baseline Value": "TBD",
+      "Target Value": "TBD",
+      "Measurement Source": "Campaign reports",
+      "Confidence Level": "Low",
+      "Advisory Priority": "Medium",
+      "Health": "Grey",
+      "Executive Narrative": "Evaluate outreach campaign model before solutioning",
+      "Owner": "TBD",
+      "Status": "Triage",
+      "Target Review Date": "2026-06-15",
+      "Notes": ""
+    }
+  ],
+  "Capabilities Requirements": [
+    {
+      "Requirement ID": "REQ-001",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Related Outcome ID": "OUT-001",
+      "Capability Area": "IVR & Routing",
+      "Specific Requirement": "Data dip using caller-provided file number",
+      "Current State": "Not confirmed",
+      "Required Future State": "Caller file number can be validated or used to support routing/context",
+      "Existing Feature Available?": "Partial",
+      "Best Practice Available?": "Yes",
+      "Gap Type": "Integration Gap",
+      "Requires CR?": "TBD",
+      "Complexity": "High",
+      "Recommendation": "Assess source system, API availability, privacy constraints, fallback routing, and Day 2 ownership",
+      "Owner": "Bell / AWS / Client",
+      "Status": "Under Analysis",
+      "Target Date": "2026-06-15",
+      "Notes": "Needs data ownership confirmation"
+    },
+    {
+      "Requirement ID": "REQ-002",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Related Outcome ID": "OUT-001",
+      "Capability Area": "Digital / Online Channel",
+      "Specific Requirement": "Improve website support for online jury questionnaire",
+      "Current State": "Website support path under review",
+      "Required Future State": "Clear online guidance and integrated escalation path",
+      "Existing Feature Available?": "Partial",
+      "Best Practice Available?": "Yes",
+      "Gap Type": "Process Gap",
+      "Requires CR?": "TBD",
+      "Complexity": "Medium",
+      "Recommendation": "Map current citizen journey and define digital containment opportunities",
+      "Owner": "Client / Bell",
+      "Status": "Triage",
+      "Target Date": "2026-06-15",
+      "Notes": ""
+    },
+    {
+      "Requirement ID": "REQ-003",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Related Outcome ID": "OUT-002",
+      "Capability Area": "Outbound",
+      "Specific Requirement": "Outreach campaign / outbound dialer or messaging",
+      "Current State": "Not yet scoped",
+      "Required Future State": "Governed campaign capability with privacy and consent model",
+      "Existing Feature Available?": "Unknown",
+      "Best Practice Available?": "Yes",
+      "Gap Type": "Governance Gap",
+      "Requires CR?": "TBD",
+      "Complexity": "High",
+      "Recommendation": "Define use case, consent model, message templates, campaign ownership, and reporting requirements",
+      "Owner": "Client / Bell",
+      "Status": "Triage",
+      "Target Date": "2026-06-30",
+      "Notes": ""
+    }
+  ],
+  "Gap Advisory Findings": [
+    {
+      "Finding ID": "GAP-001",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Related Outcome ID": "OUT-001",
+      "Related Requirement ID": "REQ-001",
+      "Gap Type": "Integration Gap",
+      "Finding / Observation": "No confirmed source/API has been identified for file-number validation.",
+      "Impact": "May limit ability to personalize IVR support or route by citizen context.",
+      "Advisory Recommendation": "Run a discovery assessment with business, technical, privacy, and integration owners before solution design.",
+      "Expected Value": "Improved citizen experience, reduced transfers, clearer feasibility view",
+      "Priority": "High",
+      "Health": "Amber",
+      "Owner": "Bell / Client",
+      "Status": "Under Analysis",
+      "Decision Needed?": "Yes",
+      "Target Date": "2026-05-30",
+      "Evidence / Source": "Client discussion / advisory notes",
+      "Notes": ""
+    },
+    {
+      "Finding ID": "GAP-002",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Related Outcome ID": "OUT-001",
+      "Related Requirement ID": "REQ-002",
+      "Gap Type": "Process Gap",
+      "Finding / Observation": "Website support path and contact centre fallback model are not fully mapped.",
+      "Impact": "May drive unnecessary calls or inconsistent support experience.",
+      "Advisory Recommendation": "Map end-to-end journey from web form issue to IVR/agent support and define handoff pattern.",
+      "Expected Value": "Reduced avoidable calls and clearer citizen journey",
+      "Priority": "Medium",
+      "Health": "Amber",
+      "Owner": "Client / Bell",
+      "Status": "Triage",
+      "Decision Needed?": "No",
+      "Target Date": "2026-06-15",
+      "Evidence / Source": "Client discussion",
+      "Notes": ""
+    },
+    {
+      "Finding ID": "GAP-003",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Related Outcome ID": "OUT-002",
+      "Related Requirement ID": "REQ-003",
+      "Gap Type": "Governance Gap",
+      "Finding / Observation": "Outbound campaign scope, privacy, consent, and reporting model are not yet defined.",
+      "Impact": "Potential compliance, operational, and delivery risk if solutioning starts too early.",
+      "Advisory Recommendation": "Create outbound use-case intake checklist and decision gate before CR submission.",
+      "Expected Value": "Better scope control and risk reduction",
+      "Priority": "High",
+      "Health": "Red",
+      "Owner": "Client / DEEP / Bell",
+      "Status": "New",
+      "Decision Needed?": "Yes",
+      "Target Date": "2026-06-15",
+      "Evidence / Source": "Client discussion",
+      "Notes": ""
+    }
+  ],
+  "Enhancement Action Backlog": [
+    {
+      "Action ID": "ACT-001",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Related Outcome ID": "OUT-001",
+      "Related Gap ID": "GAP-001",
+      "Request Type": "Investigation",
+      "Request Title": "Assess IVR file-number data dip feasibility",
+      "Description": "Confirm source system, integration pattern, privacy constraints, API readiness, and support ownership.",
+      "Business Driver": "Improve citizen support and reduce manual routing burden",
+      "Impact Area": "Citizen / Agent / IVR",
+      "Priority": "High",
+      "Urgency": "Now",
+      "Effort Estimate": "High",
+      "Dependency": "Client / LOB; AWS; Security / Privacy",
+      "Decision Needed?": "Yes",
+      "Owner": "Bell / AWS / Client",
+      "Status": "Under Analysis",
+      "Target Date": "2026-06-15",
+      "Advisory Notes": "Do not move to build until data source and ownership are confirmed.",
+      "Evidence / Attachment": ""
+    },
+    {
+      "Action ID": "ACT-002",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Related Outcome ID": "OUT-001",
+      "Related Gap ID": "GAP-002",
+      "Request Type": "Best Practice Recommendation",
+      "Request Title": "Map online-to-contact-centre journey",
+      "Description": "Document the current web form journey, failure points, IVR fallback, and agent handling expectations.",
+      "Business Driver": "Reduce avoidable contacts and improve support consistency",
+      "Impact Area": "Citizen / Agent / Website",
+      "Priority": "Medium",
+      "Urgency": "Next Release",
+      "Effort Estimate": "Medium",
+      "Dependency": "Client / LOB; DEEP",
+      "Decision Needed?": "No",
+      "Owner": "Bell / Client",
+      "Status": "Recommended",
+      "Target Date": "2026-06-30",
+      "Advisory Notes": "Can be performed as advisory discovery before formal CR.",
+      "Evidence / Attachment": ""
+    },
+    {
+      "Action ID": "ACT-003",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Related Outcome ID": "OUT-002",
+      "Related Gap ID": "GAP-003",
+      "Request Type": "Decision",
+      "Request Title": "Define outbound campaign governance model",
+      "Description": "Confirm whether outbound messaging/dialer is in scope and define campaign ownership, consent, message templates, and reporting.",
+      "Business Driver": "Avoid uncontrolled scope and privacy risk",
+      "Impact Area": "Governance / Compliance / Operations",
+      "Priority": "High",
+      "Urgency": "Now",
+      "Effort Estimate": "Medium",
+      "Dependency": "Client / LOB; DEEP; Security / Privacy",
+      "Decision Needed?": "Yes",
+      "Owner": "Client / DEEP",
+      "Status": "Triage",
+      "Target Date": "2026-06-15",
+      "Advisory Notes": "Decision required before recommending platform option.",
+      "Evidence / Attachment": ""
+    }
+  ],
+  "Risks Decisions Escalations": [
+    {
+      "Risk / Decision ID": "RDE-001",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Type": "Decision",
+      "Related Action ID": "ACT-001",
+      "Description": "Confirm data source owner for file-number lookup.",
+      "Impact": "Without a confirmed data owner, feasibility and delivery planning remain blocked.",
+      "Probability": "Medium",
+      "Severity": "High",
+      "Mitigation / Decision Required": "Identify source system owner and confirm access/API/privacy requirements.",
+      "Decision Owner": "Client / DEEP",
+      "Due Date": "2026-05-30",
+      "Status": "Open",
+      "Escalation Required?": "Yes",
+      "Notes": ""
+    },
+    {
+      "Risk / Decision ID": "RDE-002",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Type": "Risk",
+      "Related Action ID": "ACT-003",
+      "Description": "Outbound campaign scope may expand before governance and consent model are defined.",
+      "Impact": "May create compliance and operational risk.",
+      "Probability": "Medium",
+      "Severity": "High",
+      "Mitigation / Decision Required": "Use outbound campaign intake checklist and decision gate.",
+      "Decision Owner": "DEEP / Client",
+      "Due Date": "2026-06-15",
+      "Status": "Open",
+      "Escalation Required?": "Yes",
+      "Notes": ""
+    }
+  ],
+  "Training Adoption": [
+    {
+      "Training ID": "TRN-001",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Related Outcome ID": "OUT-001",
+      "Capability Area": "IVR & Routing",
+      "Audience": "Agents / Supervisors",
+      "Training / Adoption Need": "Support process for online questionnaire callers and IVR fallback handling",
+      "Current State": "Not documented as a role-based job aid",
+      "Recommended Enablement": "Create quick reference guide and TTT session once target flow is defined",
+      "Reference Material Needed": "Job aid, call flow summary, FAQs",
+      "Delivery Method": "TTT + Job Aid",
+      "Priority": "Medium",
+      "Owner": "Bell / Client",
+      "Status": "New",
+      "Target Date": "2026-07-01",
+      "Completion / Adoption Measure": "Training attendance, reduced repeat questions",
+      "Notes": ""
+    },
+    {
+      "Training ID": "TRN-002",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Related Outcome ID": "OUT-002",
+      "Capability Area": "Outbound",
+      "Audience": "Operations / Supervisors",
+      "Training / Adoption Need": "Outbound campaign readiness and governance",
+      "Current State": "Not started",
+      "Recommended Enablement": "Create campaign readiness checklist and reporting interpretation guide",
+      "Reference Material Needed": "Checklist, template, sample dashboard",
+      "Delivery Method": "Workshop",
+      "Priority": "High",
+      "Owner": "Bell / Client",
+      "Status": "Triage",
+      "Target Date": "2026-07-15",
+      "Completion / Adoption Measure": "Checklist approved, owners assigned",
+      "Notes": ""
+    }
+  ],
+  "KPI Measurement": [
+    {
+      "KPI ID": "KPI-001",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Related Outcome ID": "OUT-001",
+      "KPI / Success Measure": "Questionnaire-related call volume",
+      "Definition": "Count of calls related to annual jury questionnaire support",
+      "Baseline Value": "TBD",
+      "Target Value": "TBD",
+      "Current Value": "TBD",
+      "Trend": "Unknown",
+      "Measurement Source": "ODP / Amazon Connect / manual tagging",
+      "Reporting Frequency": "Monthly",
+      "Data Owner": "TBD",
+      "Confidence Level": "Low",
+      "Last Updated": "2026-05-07",
+      "Notes": "Requires taxonomy/tagging confirmation"
+    },
+    {
+      "KPI ID": "KPI-002",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Related Outcome ID": "OUT-001",
+      "KPI / Success Measure": "Transfer rate for questionnaire calls",
+      "Definition": "Percentage of calls transferred after reaching the support path",
+      "Baseline Value": "TBD",
+      "Target Value": "TBD",
+      "Current Value": "TBD",
+      "Trend": "Unknown",
+      "Measurement Source": "Amazon Connect / ODP",
+      "Reporting Frequency": "Monthly",
+      "Data Owner": "TBD",
+      "Confidence Level": "Low",
+      "Last Updated": "2026-05-07",
+      "Notes": "Requires queue/contact flow reporting design"
+    }
+  ],
+  "Meeting Governance Log": [
+    {
+      "Meeting ID": "MTG-001",
+      "Meeting Date": "2026-05-30",
+      "Meeting Type": "Monthly Advisory Review",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Topic": "Jury questionnaire support improvements",
+      "Summary": "Reviewed outcome, IVR file-number lookup, online support, outbound campaign concept.",
+      "Decision / Action": "Confirm data source owner and define discovery scope.",
+      "Owner": "Client / Bell",
+      "Due Date": "2026-06-15",
+      "Related Action ID": "ACT-001",
+      "Related Risk / Decision ID": "RDE-001",
+      "Status": "Planned",
+      "Next Review Date": "2026-06-30",
+      "Notes": ""
+    },
+    {
+      "Meeting ID": "MTG-002",
+      "Meeting Date": "2026-06-30",
+      "Meeting Type": "Monthly Advisory Review",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Topic": "Outbound campaign governance",
+      "Summary": "Review scope, consent, operational ownership, and reporting expectations.",
+      "Decision / Action": "Confirm if outbound is roadmap candidate or formal CR.",
+      "Owner": "DEEP / Client",
+      "Due Date": "2026-07-15",
+      "Related Action ID": "ACT-003",
+      "Related Risk / Decision ID": "RDE-002",
+      "Status": "Planned",
+      "Next Review Date": "2026-07-31",
+      "Notes": ""
+    }
+  ],
+  "Document Artifact Register": [
+    {
+      "Artifact ID": "DOC-001",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Related Outcome ID": "OUT-001",
+      "Related Action ID": "ACT-001",
+      "Artifact Type": "Discovery Notes",
+      "Artifact Name": "Jury Questionnaire IVR Integration Discovery Notes",
+      "Description": "Working notes for data-dip feasibility and integration assessment.",
+      "Owner": "Bell",
+      "Location / Link": "Paste SharePoint / Confluence / Jira link here",
+      "Version": "0.1",
+      "Status": "Draft",
+      "Last Updated": "2026-05-07",
+      "Notes": ""
+    },
+    {
+      "Artifact ID": "DOC-002",
+      "LOB ID": "LOB-001",
+      "LOB Name": "MAG-PJC",
+      "Related Outcome ID": "OUT-001",
+      "Related Action ID": "TRN-001",
+      "Artifact Type": "Job Aid",
+      "Artifact Name": "Online Jury Questionnaire Support Job Aid",
+      "Description": "Future agent/supervisor quick reference once process is confirmed.",
+      "Owner": "Bell / Client",
+      "Location / Link": "TBD",
+      "Version": "0.1",
+      "Status": "Planned",
+      "Last Updated": "2026-05-07",
+      "Notes": ""
+    }
+  ],
+  "Relationship Map": [
+    {
+      "Parent / Source List": "LOB Profile",
+      "Key Field": "LOB ID",
+      "Child / Target List": "Outcomes",
+      "Linked Field": "LOB ID",
+      "Relationship": "One LOB -> Many Outcomes",
+      "Why It Matters": "Keeps every outcome tied to a program area."
+    },
+    {
+      "Parent / Source List": "Outcomes",
+      "Key Field": "Outcome ID",
+      "Child / Target List": "Capabilities Requirements",
+      "Linked Field": "Related Outcome ID",
+      "Relationship": "One Outcome -> Many Requirements",
+      "Why It Matters": "Shows which capabilities support business value."
+    },
+    {
+      "Parent / Source List": "Capabilities Requirements",
+      "Key Field": "Requirement ID",
+      "Child / Target List": "Gap Advisory Findings",
+      "Linked Field": "Related Requirement ID",
+      "Relationship": "One Requirement -> Many Gaps",
+      "Why It Matters": "Separates the request from the advisory finding."
+    },
+    {
+      "Parent / Source List": "Gap Advisory Findings",
+      "Key Field": "Finding ID",
+      "Child / Target List": "Enhancement Action Backlog",
+      "Linked Field": "Related Gap ID",
+      "Relationship": "One Gap -> Many Actions",
+      "Why It Matters": "Creates traceability from advisory observation to work item."
+    },
+    {
+      "Parent / Source List": "Enhancement Action Backlog",
+      "Key Field": "Action ID",
+      "Child / Target List": "Risks Decisions Escalations",
+      "Linked Field": "Related Action ID",
+      "Relationship": "One Action -> Many Risks/Decisions",
+      "Why It Matters": "Makes governance blockers visible."
+    },
+    {
+      "Parent / Source List": "Outcomes",
+      "Key Field": "Outcome ID",
+      "Child / Target List": "KPI Measurement",
+      "Linked Field": "Related Outcome ID",
+      "Relationship": "One Outcome -> Many KPIs",
+      "Why It Matters": "Ensures every outcome has measurable success criteria."
+    },
+    {
+      "Parent / Source List": "Outcomes / Capabilities",
+      "Key Field": "Outcome ID / Capability Area",
+      "Child / Target List": "Training Adoption",
+      "Linked Field": "Related Outcome ID / Capability Area",
+      "Relationship": "Outcome/Capability -> Training Needs",
+      "Why It Matters": "Shows whether gaps are training/adoption rather than technology."
+    },
+    {
+      "Parent / Source List": "Any List",
+      "Key Field": "Relevant ID",
+      "Child / Target List": "Meeting Governance Log",
+      "Linked Field": "Related Action/Risk ID",
+      "Relationship": "Many Items -> Meeting Decisions",
+      "Why It Matters": "Turns monthly meetings into decisions and actions."
+    },
+    {
+      "Parent / Source List": "Any List",
+      "Key Field": "Relevant ID",
+      "Child / Target List": "Document Artifact Register",
+      "Linked Field": "Related ID",
+      "Relationship": "Many Items -> Documents",
+      "Why It Matters": "Connects BRDs, job aids, MOPs, and evidence to the tracker."
+    }
+  ],
+  "Field Dictionary": [
+    {
+      "List / Sheet": "LOB Profile",
+      "Field Name": "LOB ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "LOB Profile",
+      "Field Name": "LOB Name",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "LOB Profile",
+      "Field Name": "Ministry / Cluster",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "LOB Profile",
+      "Field Name": "Business Owner",
+      "Recommended Type": "Person or Group",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "LOB Profile",
+      "Field Name": "Technical Owner",
+      "Recommended Type": "Person or Group",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "LOB Profile",
+      "Field Name": "Bell Advisor / CSM",
+      "Recommended Type": "Person or Group",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "LOB Profile",
+      "Field Name": "Implementation Partner",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "LOB Profile",
+      "Field Name": "Support Model",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "LOB Profile",
+      "Field Name": "Current EP Status",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "LOB Profile",
+      "Field Name": "Capabilities Enabled",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "LOB Profile",
+      "Field Name": "Maturity Level",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "LOB Profile",
+      "Field Name": "Health",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "LOB Profile",
+      "Field Name": "Last Review Date",
+      "Recommended Type": "Date",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "LOB Profile",
+      "Field Name": "Next Review Date",
+      "Recommended Type": "Date",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "LOB Profile",
+      "Field Name": "Notes",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Outcomes",
+      "Field Name": "Outcome ID",
+      "Recommended Type": "Single line text - unique ID",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": "Use a consistent prefix, e.g., LOB-001, OUT-001, REQ-001."
+    },
+    {
+      "List / Sheet": "Outcomes",
+      "Field Name": "LOB ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Outcomes",
+      "Field Name": "LOB Name",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Outcomes",
+      "Field Name": "Business Outcome",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Outcomes",
+      "Field Name": "Current Pain Point",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Outcomes",
+      "Field Name": "Desired Future State",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Outcomes",
+      "Field Name": "Success Metric / KPI",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Outcomes",
+      "Field Name": "Baseline Value",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Outcomes",
+      "Field Name": "Target Value",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Outcomes",
+      "Field Name": "Measurement Source",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Outcomes",
+      "Field Name": "Confidence Level",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Outcomes",
+      "Field Name": "Advisory Priority",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Outcomes",
+      "Field Name": "Health",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Outcomes",
+      "Field Name": "Executive Narrative",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Outcomes",
+      "Field Name": "Owner",
+      "Recommended Type": "Person or Group",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Outcomes",
+      "Field Name": "Status",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Outcomes",
+      "Field Name": "Target Review Date",
+      "Recommended Type": "Date",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Outcomes",
+      "Field Name": "Notes",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Capabilities Requirements",
+      "Field Name": "Requirement ID",
+      "Recommended Type": "Single line text - unique ID",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": "Use a consistent prefix, e.g., LOB-001, OUT-001, REQ-001."
+    },
+    {
+      "List / Sheet": "Capabilities Requirements",
+      "Field Name": "LOB ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Capabilities Requirements",
+      "Field Name": "LOB Name",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Capabilities Requirements",
+      "Field Name": "Related Outcome ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "Outcomes",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Capabilities Requirements",
+      "Field Name": "Capability Area",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Capabilities Requirements",
+      "Field Name": "Specific Requirement",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Capabilities Requirements",
+      "Field Name": "Current State",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Capabilities Requirements",
+      "Field Name": "Required Future State",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Capabilities Requirements",
+      "Field Name": "Existing Feature Available?",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Capabilities Requirements",
+      "Field Name": "Best Practice Available?",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Capabilities Requirements",
+      "Field Name": "Gap Type",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Capabilities Requirements",
+      "Field Name": "Requires CR?",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Capabilities Requirements",
+      "Field Name": "Complexity",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Capabilities Requirements",
+      "Field Name": "Recommendation",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Capabilities Requirements",
+      "Field Name": "Owner",
+      "Recommended Type": "Person or Group",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Capabilities Requirements",
+      "Field Name": "Status",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Capabilities Requirements",
+      "Field Name": "Target Date",
+      "Recommended Type": "Date",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Capabilities Requirements",
+      "Field Name": "Notes",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Gap Advisory Findings",
+      "Field Name": "Finding ID",
+      "Recommended Type": "Single line text - unique ID",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": "Use a consistent prefix, e.g., LOB-001, OUT-001, REQ-001."
+    },
+    {
+      "List / Sheet": "Gap Advisory Findings",
+      "Field Name": "LOB ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Gap Advisory Findings",
+      "Field Name": "LOB Name",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Gap Advisory Findings",
+      "Field Name": "Related Outcome ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "Outcomes",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Gap Advisory Findings",
+      "Field Name": "Related Requirement ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "Capabilities Requirements",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Gap Advisory Findings",
+      "Field Name": "Gap Type",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Gap Advisory Findings",
+      "Field Name": "Finding / Observation",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Gap Advisory Findings",
+      "Field Name": "Impact",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Gap Advisory Findings",
+      "Field Name": "Advisory Recommendation",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Gap Advisory Findings",
+      "Field Name": "Expected Value",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Gap Advisory Findings",
+      "Field Name": "Priority",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Gap Advisory Findings",
+      "Field Name": "Health",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Gap Advisory Findings",
+      "Field Name": "Owner",
+      "Recommended Type": "Person or Group",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Gap Advisory Findings",
+      "Field Name": "Status",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Gap Advisory Findings",
+      "Field Name": "Decision Needed?",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Gap Advisory Findings",
+      "Field Name": "Target Date",
+      "Recommended Type": "Date",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Gap Advisory Findings",
+      "Field Name": "Evidence / Source",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Gap Advisory Findings",
+      "Field Name": "Notes",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "Action ID",
+      "Recommended Type": "Single line text - unique ID",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": "Use a consistent prefix, e.g., LOB-001, OUT-001, REQ-001."
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "LOB ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "LOB Name",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "Related Outcome ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "Outcomes",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "Related Gap ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "Gap Advisory Findings",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "Request Type",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "Request Title",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "Description",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "Business Driver",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "Impact Area",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "Priority",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "Urgency",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "Effort Estimate",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "Dependency",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "Decision Needed?",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "Owner",
+      "Recommended Type": "Person or Group",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "Status",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "Target Date",
+      "Recommended Type": "Date",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "Advisory Notes",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Enhancement Action Backlog",
+      "Field Name": "Evidence / Attachment",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Risks Decisions Escalations",
+      "Field Name": "Risk / Decision ID",
+      "Recommended Type": "Single line text - unique ID",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": "Use a consistent prefix, e.g., LOB-001, OUT-001, REQ-001."
+    },
+    {
+      "List / Sheet": "Risks Decisions Escalations",
+      "Field Name": "LOB ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Risks Decisions Escalations",
+      "Field Name": "LOB Name",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Risks Decisions Escalations",
+      "Field Name": "Type",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Risks Decisions Escalations",
+      "Field Name": "Related Action ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "Enhancement Action Backlog",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Risks Decisions Escalations",
+      "Field Name": "Description",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Risks Decisions Escalations",
+      "Field Name": "Impact",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Risks Decisions Escalations",
+      "Field Name": "Probability",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Risks Decisions Escalations",
+      "Field Name": "Severity",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Risks Decisions Escalations",
+      "Field Name": "Mitigation / Decision Required",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Risks Decisions Escalations",
+      "Field Name": "Decision Owner",
+      "Recommended Type": "Person or Group",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Risks Decisions Escalations",
+      "Field Name": "Due Date",
+      "Recommended Type": "Date",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Risks Decisions Escalations",
+      "Field Name": "Status",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Risks Decisions Escalations",
+      "Field Name": "Escalation Required?",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Risks Decisions Escalations",
+      "Field Name": "Notes",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Training Adoption",
+      "Field Name": "Training ID",
+      "Recommended Type": "Single line text - unique ID",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": "Use a consistent prefix, e.g., LOB-001, OUT-001, REQ-001."
+    },
+    {
+      "List / Sheet": "Training Adoption",
+      "Field Name": "LOB ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Training Adoption",
+      "Field Name": "LOB Name",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Training Adoption",
+      "Field Name": "Related Outcome ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "Outcomes",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Training Adoption",
+      "Field Name": "Capability Area",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Training Adoption",
+      "Field Name": "Audience",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Training Adoption",
+      "Field Name": "Training / Adoption Need",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Training Adoption",
+      "Field Name": "Current State",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Training Adoption",
+      "Field Name": "Recommended Enablement",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Training Adoption",
+      "Field Name": "Reference Material Needed",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Training Adoption",
+      "Field Name": "Delivery Method",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Training Adoption",
+      "Field Name": "Priority",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Training Adoption",
+      "Field Name": "Owner",
+      "Recommended Type": "Person or Group",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Training Adoption",
+      "Field Name": "Status",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Training Adoption",
+      "Field Name": "Target Date",
+      "Recommended Type": "Date",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Training Adoption",
+      "Field Name": "Completion / Adoption Measure",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Training Adoption",
+      "Field Name": "Notes",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "KPI Measurement",
+      "Field Name": "KPI ID",
+      "Recommended Type": "Single line text - unique ID",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": "Use a consistent prefix, e.g., LOB-001, OUT-001, REQ-001."
+    },
+    {
+      "List / Sheet": "KPI Measurement",
+      "Field Name": "LOB ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "KPI Measurement",
+      "Field Name": "LOB Name",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "KPI Measurement",
+      "Field Name": "Related Outcome ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "Outcomes",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "KPI Measurement",
+      "Field Name": "KPI / Success Measure",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "KPI Measurement",
+      "Field Name": "Definition",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "KPI Measurement",
+      "Field Name": "Baseline Value",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "KPI Measurement",
+      "Field Name": "Target Value",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "KPI Measurement",
+      "Field Name": "Current Value",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "KPI Measurement",
+      "Field Name": "Trend",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "KPI Measurement",
+      "Field Name": "Measurement Source",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "KPI Measurement",
+      "Field Name": "Reporting Frequency",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "KPI Measurement",
+      "Field Name": "Data Owner",
+      "Recommended Type": "Person or Group",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "KPI Measurement",
+      "Field Name": "Confidence Level",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "KPI Measurement",
+      "Field Name": "Last Updated",
+      "Recommended Type": "Date",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "KPI Measurement",
+      "Field Name": "Notes",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Meeting Governance Log",
+      "Field Name": "Meeting ID",
+      "Recommended Type": "Single line text - unique ID",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": "Use a consistent prefix, e.g., LOB-001, OUT-001, REQ-001."
+    },
+    {
+      "List / Sheet": "Meeting Governance Log",
+      "Field Name": "Meeting Date",
+      "Recommended Type": "Date",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Meeting Governance Log",
+      "Field Name": "Meeting Type",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Meeting Governance Log",
+      "Field Name": "LOB ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Meeting Governance Log",
+      "Field Name": "LOB Name",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Meeting Governance Log",
+      "Field Name": "Topic",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Meeting Governance Log",
+      "Field Name": "Summary",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Meeting Governance Log",
+      "Field Name": "Decision / Action",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Meeting Governance Log",
+      "Field Name": "Owner",
+      "Recommended Type": "Person or Group",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Meeting Governance Log",
+      "Field Name": "Due Date",
+      "Recommended Type": "Date",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Meeting Governance Log",
+      "Field Name": "Related Action ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "Enhancement Action Backlog",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Meeting Governance Log",
+      "Field Name": "Related Risk / Decision ID",
+      "Recommended Type": "Single line text - unique ID",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": "Use a consistent prefix, e.g., LOB-001, OUT-001, REQ-001."
+    },
+    {
+      "List / Sheet": "Meeting Governance Log",
+      "Field Name": "Status",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Meeting Governance Log",
+      "Field Name": "Next Review Date",
+      "Recommended Type": "Date",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Meeting Governance Log",
+      "Field Name": "Notes",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Document Artifact Register",
+      "Field Name": "Artifact ID",
+      "Recommended Type": "Single line text - unique ID",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": "Use a consistent prefix, e.g., LOB-001, OUT-001, REQ-001."
+    },
+    {
+      "List / Sheet": "Document Artifact Register",
+      "Field Name": "LOB ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Document Artifact Register",
+      "Field Name": "LOB Name",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "LOB Profile",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Document Artifact Register",
+      "Field Name": "Related Outcome ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "Outcomes",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Document Artifact Register",
+      "Field Name": "Related Action ID",
+      "Recommended Type": "Lookup",
+      "Lookup Candidate?": "Yes",
+      "Suggested Link / Source": "Enhancement Action Backlog",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Document Artifact Register",
+      "Field Name": "Artifact Type",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Document Artifact Register",
+      "Field Name": "Artifact Name",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Document Artifact Register",
+      "Field Name": "Description",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Document Artifact Register",
+      "Field Name": "Owner",
+      "Recommended Type": "Person or Group",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Document Artifact Register",
+      "Field Name": "Location / Link",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Document Artifact Register",
+      "Field Name": "Version",
+      "Recommended Type": "Single line text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Document Artifact Register",
+      "Field Name": "Status",
+      "Recommended Type": "Choice",
+      "Lookup Candidate?": "Choice / Lookup Values",
+      "Suggested Link / Source": "Lookup Values",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Document Artifact Register",
+      "Field Name": "Last Updated",
+      "Recommended Type": "Date",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    },
+    {
+      "List / Sheet": "Document Artifact Register",
+      "Field Name": "Notes",
+      "Recommended Type": "Multiple lines of text",
+      "Lookup Candidate?": "No",
+      "Suggested Link / Source": "",
+      "Notes": ""
+    }
+  ]
+}
